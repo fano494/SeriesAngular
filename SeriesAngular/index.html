@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="es" data-ng-app="app">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <!-- Satellizer 
+    <script src="//cdn.jsdelivr.net/satellizer/0.14.0/satellizer.min.js"></script>-->
+    <!-- CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="Angular/css/bootf.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="cabecera" data-ng-include="'Angular/view/head.html'">
+    </nav>
+    <div data-ng-view class="cuerpo">
+    </div>
+    <footer class="pie" data-ng-include="'Angular/view/foot.html'">
+
+    </footer>
+    <!-- Modal -->
+    <div id="modal" data-ng-include="'Angular/view/login/login.html'">
+    </div>
+    <!-- Angula scripts-->
+    <script src="scripts/jquery-2.2.0.js"></script>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+
+    <!-- APP Script -->
+    <script src="Angular/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="Angular/controller/headController.js"></script>
+    <script src="Angular/controller/loginController.js"></script>
+    <script src="Angular/controller/initController.js"></script>
+</body>
+</html>

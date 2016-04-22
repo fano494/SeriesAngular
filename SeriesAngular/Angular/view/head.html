@@ -1,0 +1,29 @@
+﻿<div data-ng-controller="headController as ctr">
+    <div class="fila">
+        <a href="#/">
+            <div class="columna-3-0 cabecera-titulo clarear">
+                SeriesAngular
+            </div>
+        </a>
+        <div class="columna-6-0">
+            <ul class="lista-horizontal cabecera-menu">
+                <li data-ng-class="{marca: ctr.ini, libre:!ctr.ini}">
+                    <a href="#/" data-ng-click="ctr.cambio('ini')">inicio</a>
+                </li>
+                <li data-ng-class="{marca: ctr.ser, libre:!ctr.ser}">
+                    <a href="#/" data-ng-click="ctr.cambio('ser')">series</a>
+                </li>
+                <li data-ng-class="{marca: ctr.rec, libre:!ctr.rec}">
+                    <a href="#/" data-ng-click="ctr.cambio('rec')">recomendaciones</a>
+                </li>
+            </ul>
+        </div>
+        <div class="columna-3-0">
+            <a href="#/login">
+                <div class="cabecera-boton clarear">
+                    <i class="fa fa-sign-in" aria-hidden="true"> </i> Login
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
