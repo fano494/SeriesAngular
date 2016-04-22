@@ -1,0 +1,3 @@
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngular\obj\Debug\SeriesAngularAPI.csprojResolveAssemblyReference.cache
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngular\obj\Debug\SeriesAngular.dll
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngular\obj\Debug\SeriesAngular.pdb

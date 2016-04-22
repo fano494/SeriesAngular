@@ -1,7 +1,6 @@
-﻿using AcademiaDAL;
-using AcademiaModel;
-using AcademiaModel.Filtros;
-using AcademiaModel.PagedList;
+﻿using SeriesAngularModel;
+using SeriesAngularModel.Filtros;
+using SeriesAngularModel.PagedList;
 using System.Collections.Generic;
 using System.Web.Http;
 

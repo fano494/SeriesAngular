@@ -11,7 +11,7 @@
             document.getElementById("loginModal").className = 'oculto';
         }
 
-        vm.login = function () {
+        vm.login = function (){
             
         };
         vm.cerrar = function () {
