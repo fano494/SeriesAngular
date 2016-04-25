@@ -7,7 +7,7 @@ using System.Web.Http;
 namespace SeriesAngularWebAPI.Controllers
 {
     public class SeriesController : ApiController
-    {
+    {/*
         // POST: api/Serie
         [Route("api/Serie/{sort}/{reverse}/{start}/{number}")]
         public PagedList<SerieDTO> Post(string sort, bool reverse, int start, int number, [FromBody]SerieFiltroDTO filtros)
@@ -35,6 +35,6 @@ namespace SeriesAngularWebAPI.Controllers
         {
             DataBase db = new DataBase();
             return db.BorrarSerie(id);
-        }
+        }*/
     }
 }

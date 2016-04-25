@@ -1,7 +1,5 @@
-C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngular\obj\Debug\SeriesAngularAPI.csprojResolveAssemblyReference.cache
-C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngular\obj\Debug\SeriesAngular.dll
-C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngular\obj\Debug\SeriesAngular.pdb
-C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularAPI.csprojResolveAssemblyReference.cache
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularAPI.dll
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularAPI.pdb
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\roslyn\csc.exe
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -59,5 +57,3 @@ C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\System.Net.Http.Formatting.xml
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\System.Web.Http.xml
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\System.Web.Http.WebHost.xml
-C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularAPI.dll
-C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularAPI.pdb

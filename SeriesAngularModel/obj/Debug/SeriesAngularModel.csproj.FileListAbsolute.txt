@@ -2,3 +2,8 @@ C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngularM
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngularModel\bin\Debug\SeriesAngularModel.pdb
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngularModel\obj\Debug\SeriesAngularModel.dll
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngularAPI\SeriesAngularModel\obj\Debug\SeriesAngularModel.pdb
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\bin\Debug\SeriesAngularModel.dll
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\bin\Debug\SeriesAngularModel.pdb
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.csprojResolveAssemblyReference.cache
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.dll
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.pdb
