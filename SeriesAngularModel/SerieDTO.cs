@@ -12,5 +12,12 @@ namespace SeriesAngularModel
         public string Nombre { get; set; }
 
         public string Descripcion { get; set; }
+
+        public SerieDTO(int i, string n, string d)
+        {
+            Id = i;
+            Nombre = n;
+            Descripcion = d;
+        }
     }
 }

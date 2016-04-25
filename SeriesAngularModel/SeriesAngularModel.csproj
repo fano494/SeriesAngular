@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBase.cs" />
     <Compile Include="Filtros\SerieFiltroDTO.cs" />
     <Compile Include="PagedList\Estructura.cs" />
     <Compile Include="PagedList\PagedList.cs" />
