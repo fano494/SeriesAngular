@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace SeriesAngularModel
 {
-    class DataBase
+    public class DataBase
     {
-        private SerieDTO[] = {new SerieDTO(1, 'Breaking Bad', 'Pelicula de yonkis'),
-                              new SerieDTO(2, 'Juego de tronos', }
+        private List<SerieDTO> minibd = new List<SerieDTO>();
+
+        public DataBase()
+        {
+            minibd.Add(new SerieDTO(1, "Breaking Bad", "Serie de yonkis"));
+            minibd.Add(new SerieDTO(2, "Juego de tronos", "Serie de barcos y putas"));
+        }
+
+        public SerieDTO ObtenerSerie(int id)
+        {
+            return minibd.Find(i => i.Id == id);
+        }
     }
 }

@@ -57,3 +57,4 @@ C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\System.Net.Http.Formatting.xml
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\System.Web.Http.xml
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\System.Web.Http.WebHost.xml
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularWebAPI.csprojResolveAssemblyReference.cache

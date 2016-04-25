@@ -15,14 +15,14 @@ namespace SeriesAngularWebAPI.Controllers
             DataBase db = new DataBase();
             return db.ObtenerSeries(start, number, filtros);
         }
-
+        */
         // GET: api/Serie/5
         public SerieDTO Get(int id)
         {
             DataBase db = new DataBase();
             return db.ObtenerSerie(id);
         }
-
+        /*
         // POST: api/Serie
         public int Post(SerieDTO serie)
         {
