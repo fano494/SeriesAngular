@@ -48,14 +48,27 @@ a{
 }
 .tabla{
     width: 90%;
-    margin: 5px 5% 5px 5%;
+    margin: 5px 5% 25px 5%;
 	box-shadow: 0px 2px 2px 0px #049dbf;
 	border: 1px solid #03658c;
 	border-radius: 0px;
+    border-collapse: collapse;
 }
 .tabla thead{
-
+    background-color: #03658c;
+	color: #f1f2eb;
+    border-bottom: 3px solid #03658c;
 }
+.tabla tbody tr:nth-child(odd) {
+  background-color: #92CDCF;
+}
+.tabla tbody tr:nth-child(even) {
+  background-color: #C4D7ED;
+}
+.tabla tbody tr{
+    height: 40px;
+}
+
 .libre{
 	transition: border linear 0.1s;
 }
@@ -202,7 +215,7 @@ a{
 	font-size: 14px;
 	padding: 0px 10px 10px 10px;
 }
-.alerta, .cabecera-boton, .cargando{
+.alerta, .cabecera-boton, .cargando, .boton{
 	background-color: #011826;
 	color: #f1f2eb;
 	transition: opacity linear 0.2s;
@@ -218,7 +231,7 @@ a{
 	transition: opacity linear 0.2s;
 	color: #03658c;
 }
-.alerta:hover, .enlace-destacado a, .clarear:hover{
+.alerta:hover, .enlace-destacado a, .clarear:hover, .boton:hover{
 	opacity: 0.8;
 }
 .text-center{
