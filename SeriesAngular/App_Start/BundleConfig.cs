@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace SeriesAngular
+namespace SeriesAngularWebAPI
 {
     public class BundleConfig
     {

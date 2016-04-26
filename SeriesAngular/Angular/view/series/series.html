@@ -1,0 +1,73 @@
+﻿<div class="fila">
+    <div class="columna-6-3">
+        <div class="panel">
+            <h2>Series</h2>
+            <table class="tabla text-center" data-st-pipe="ctr.cargarDatos" data-st-table="ctr.cursos">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Puntuacion
+                        </th>
+                        <th>
+                            Opciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="serie in ctr.series">
+                        <td data-ng-bind="::serie.Id">
+
+                        </td>
+                        <td data-ng-bind="::serie.Nombre">
+
+                        </td>
+                        <td data-ng-bind="::serie.Puntuacion">
+
+                        </td>
+                        <td>
+                            <button class="boton" type="button" data-ng-click="ctr.verSerie(serie.Id)">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="columna-3-0">
+        <div class="panel">
+            <h2>
+                Categorias
+            </h2>
+            <ul class="lista-ul">
+                <li>
+                    Accion
+                </li>
+                <li>
+                    Drama
+                </li>
+                <li>
+                    Ciencia Ficcion
+                </li>
+                <li>
+                    Belico
+                </li>
+                <li>
+                    Romance
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal text-center" data-ng-class="{visible: ctr.cargando, oculto: !ctr.cargando}">
+    <div class="cargando margin-top-15">
+        <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+        <span>Cargando</span>
+    </div>
+</div>

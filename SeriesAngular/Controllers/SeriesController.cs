@@ -6,16 +6,16 @@ using System.Web.Http;
 
 namespace SeriesAngularWebAPI.Controllers
 {
-    public class SeriesController : ApiController
-    {/*
-        // POST: api/Serie
+    public class SerieController : ApiController
+    {
         [Route("api/Serie/{sort}/{reverse}/{start}/{number}")]
+        // POST: api/Serie
         public PagedList<SerieDTO> Post(string sort, bool reverse, int start, int number, [FromBody]SerieFiltroDTO filtros)
         {
             DataBase db = new DataBase();
             return db.ObtenerSeries(start, number, filtros);
         }
-        */
+
         // GET: api/Serie/5
         public SerieDTO Get(int id)
         {

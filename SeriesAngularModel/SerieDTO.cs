@@ -13,11 +13,17 @@ namespace SeriesAngularModel
 
         public string Descripcion { get; set; }
 
-        public SerieDTO(int i, string n, string d)
+        public string Imagen { get; set; }
+
+        public float Puntuacion { get; set; }
+
+        public SerieDTO(int id, string nom, string des, string img, float pun)
         {
-            Id = i;
-            Nombre = n;
-            Descripcion = d;
+            Id = id;
+            Nombre = nom;
+            Descripcion = des;
+            Imagen = img;
+            Puntuacion = pun;
         }
     }
 }

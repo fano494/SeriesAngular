@@ -14,19 +14,6 @@ a{
 	text-decoration: none;
 	color:#011826;
 }
-.lista-horizontal li{
-	display: inline-block;
-	padding: 0px 2vw 0px 2vw;
-}
-.oculto{
-    display: none;
-}
-.visible{
-    display: block;
-}
-.padding-top-10{
-    padding-top: 10px;
-}
 .cabecera{
 	padding: 5px 0px 5px 0vw;
 	background-color: #f1f2eb;
@@ -48,14 +35,26 @@ a{
 .cabecera-menu ul{
 	margin: 0px;
 }
-.cabecera-boton{
+.boton, .cabecera-boton{
     display: inline-block;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
     padding: 3px 10% 3px 10%;
     box-shadow: 0px 2px 2px 0px #049dbf;
 	border: 1px solid #03658c;
 	border-radius: 0px;
+}
+.cabecera-boton{
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+}
+.tabla{
+    width: 90%;
+    margin: 5px 5% 5px 5%;
+	box-shadow: 0px 2px 2px 0px #049dbf;
+	border: 1px solid #03658c;
+	border-radius: 0px;
+}
+.tabla thead{
+
 }
 .libre{
 	transition: border linear 0.1s;
@@ -81,7 +80,10 @@ a{
 }
 
 /* ---- COL TAM ---- */
-.columna-3-0, .columna-3-3, .columna-3-4{
+.columna-2-5{
+    width: 16.67%;
+}
+.columna-3-0, .columna-3-3, .columna-3-4, .columna-3-5{
 	width: 25%;
 }
 .columna-6-0, .columna-6-3{
@@ -94,6 +96,9 @@ a{
 	width: 75%;
 }
 /* ---- COL MAR ---- */
+.columna-2-5, .columna-3-5{
+    margin-left: 41.67%;
+}
 .columna-3-4{
     margin-left: 30%;
 }
@@ -111,24 +116,31 @@ a{
 .lista-ul li{
 	padding: 3px;
 }
-.img-redonda, .img-cuadrada{
+.img-redonda, .img-cuadrada, .img-vertical{
 	box-shadow: 0px 2px 2px 0px #049dbf;
 	border: 1px solid #03658c;
 	margin: 1vh 1vw 1vh 1vw;
 	background-color: #fff;
 	width: auto;
 	height: auto;
-	padding: 1vh 1vw 1vh 1vw;
+    overflow: hidden;
 }
 .img-redonda{
+    padding: 0;
 	border-radius: 100%;
 }
-.img-cuadrada{
+.img-cuadrada, .img-vertical{
+    padding: 1vh 0.5vw 1vh 0.5vw;
 	border-radius: 0px;	
 }
 .img-cuadrada img, .img-redonda img{
-	width: 17vw;
-	height: 17vw;
+	width: 100%;
+    height: 100%;
+}
+.img-vertical img{
+    width: 100%;
+    height: 35vh;
+    margin-bottom: 15px;
 }
 .modal{
     position: fixed;
@@ -142,7 +154,7 @@ a{
     padding-right: 20vw;
     padding-top: 25vh;
 }
-.panel, .alerta{
+.panel, .alerta, .cargando{
 	margin: 0vh 1vw 2vh 1vw;
 	box-shadow: 0px 2px 2px 0px #049dbf;
 	border: 1px solid #03658c;
@@ -151,9 +163,7 @@ a{
 .panel{
     border: 1px solid #03658c;
     box-shadow: 0px 2px 2px 0px #666;
-}
-.panel{
-	background-color: #f1f2eb;
+    background-color: #f1f2eb;
 }
 .panel input{
     display: block;
@@ -192,7 +202,7 @@ a{
 	font-size: 14px;
 	padding: 0px 10px 10px 10px;
 }
-.alerta, .cabecera-boton{
+.alerta, .cabecera-boton, .cargando{
 	background-color: #011826;
 	color: #f1f2eb;
 	transition: opacity linear 0.2s;
@@ -225,7 +235,14 @@ a{
 	padding-top: 0.5vh;
 	margin: 0;
 }
-
+.cargando{
+    display: inline-block;
+    z-index: 2;
+    padding: 10px;
+}
+.cargando p{
+    margin: 0;
+}
 .texto-fino{
 	font-weight: 300;
 }
@@ -241,7 +258,28 @@ a{
 	border-radius: 0px;
 	padding: 1px;
 }
-
+.text-center{
+    text-align: center;
+}
+.margin-top-5{
+    margin-top: 5vh; 
+}
+.margin-top-15{
+    margin-top: 15vh; 
+}
+.lista-horizontal li{
+	display: inline-block;
+	padding: 0px 2vw 0px 2vw;
+}
+.oculto{
+    display: none;
+}
+.visible{
+    display: block;
+}
+.padding-top-10{
+    padding-top: 10px;
+}
 @media (max-width:769px){
 	.panel p, .panel ul{
 		font-size: 9px;

@@ -9,7 +9,7 @@ namespace SeriesAngularWebAPI
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configure(SeriesAngular.WebApiConfig.Register);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             var settings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
 

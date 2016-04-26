@@ -1,9 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('academiaApp').factory('seriesAngularDataFactory', seriesAngularDataFactory);
-
-    seriesAngularDataFactory.$inject = ['GenericDataFactory'];
+    angular.module('app').factory('seriesAngularDataFactory', ['GenericDataFactory', seriesAngularDataFactory]);
 
     function seriesAngularDataFactory(GenericDataFactory) {
         var service = {};
@@ -11,6 +9,10 @@
         //SERIES
         service.getSerie = function (id) {
             return GenericDataFactory.get('api/Serie/' + id);
+        };
+
+        service.getSeries = function (sort, reverse, start, number, filtros) {
+            return GenericDataFactory.post('api/Serie/' + sort + '/' + reverse + '/' + start + '/' + number, filtros);
         };
 
         service.saveSerie = function (serie) {
@@ -47,8 +49,8 @@
 
         service.deleteAlumnoCurso = function (idCurso, idAlumno) {
             return GenericDataFactory.remove('api/Curso/' + idCurso + '/Alumno/' + idAlumno);
-        };
-        */
+        };*/
+        
         return service;
     };
 })();
