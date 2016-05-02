@@ -7,3 +7,8 @@ C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularMode
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.csprojResolveAssemblyReference.cache
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.dll
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.pdb
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularModel\bin\Debug\SeriesAngularModel.dll
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularModel\bin\Debug\SeriesAngularModel.pdb
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.csprojResolveAssemblyReference.cache
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.dll
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularModel\obj\Debug\SeriesAngularModel.pdb
