@@ -8,12 +8,12 @@
                 controller: 'initController',
                 controllerAs: 'ctr',
                 label: 'Inicio'
-            }).when('/login',{
-                templateUrl: 'Angular/view/init.html',
+            }).when('/login', {
+                templateUrl: 'Angular/view/login/login.html',
                 controller: 'loginController',
                 controllerAs: 'ctr',
                 label: 'Login'
-            }).when('/series',{
+            }).when('/series', {
                 templateUrl: 'Angular/view/series/series.html',
                 controller: 'seriesController',
                 controllerAs: 'ctr',

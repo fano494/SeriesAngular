@@ -1,0 +1,25 @@
+﻿<div class="fila">
+    <a href="#/" data-ng-click="hc.cambio('ini')">
+        <div class="columna-3-0 cabecera-titulo clarear">
+            SeriesAngular
+        </div>
+    </a>
+    <div class="columna-6-0">
+        <ul class="lista-horizontal cabecera-menu">
+            <li data-ng-class="{marca: hc.ini, libre:!hc.ini}">
+                <a href="#/" data-ng-click="hc.cambio('ini')">inicio</a>
+            </li>
+            <li data-ng-class="{marca: hc.ser, libre:!hc.ser}">
+                <a href="#/series" data-ng-click="hc.cambio('ser')">series</a>
+            </li>
+            <li data-ng-class="{marca: hc.rec, libre:!hc.rec}">
+                <a href="#/" data-ng-click="hc.cambio('rec')">recomendaciones</a>
+            </li>
+        </ul>
+    </div>
+    <div class="columna-3-0">
+        <div class="cabecera-boton clarear" data-ng-click="hc.loginOpen()">
+            <i class="fa fa-sign-in" aria-hidden="true"> </i> Login
+        </div>
+    </div>
+</div>

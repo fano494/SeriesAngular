@@ -14,6 +14,12 @@ a{
 	text-decoration: none;
 	color:#011826;
 }
+.inactivo{
+    cursor: no-drop !important;
+}
+.inactivo:first-child{
+    pointer-events: none !important;
+}
 .cabecera{
 	padding: 5px 0px 5px 0vw;
 	background-color: #f1f2eb;
@@ -185,6 +191,14 @@ a{
     padding: 5px;
     width: auto;
     margin: 5px 5px 5px 10px; 
+}
+.input-warning{
+    border-color: #F11D23 !important;
+}
+.input-warning:focus{
+    outline: none !important;
+    border-color: #F11D23 !important;
+	box-shadow: 0px 0px 1px 0px #F11D23 !important;
 }
 .panel input[type="submit"],.panel input[type="button"]{
     width: 10vw;

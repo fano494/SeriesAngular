@@ -1,9 +1,12 @@
 ﻿(function () {
     'use strict';
-    angular.module('app').controller('seriesController', ['seriesAngularDataFactory', '$log', '$location', seriesController]);
+    angular.module('app').controller('seriesController', ['seriesAngularDataFactory', 'loginFactory', '$location', seriesController]);
 
-    function seriesController(seriesAngularDataFactory, $log, $location) {
+    function seriesController(seriesAngularDataFactory, loginFactory, $location) {
         var vm = this;
+        if(!loginFactory.login){
+            $location.path('/login');
+        }
         vm.cargando = true;
 
         vm.filtros = {};

@@ -14,8 +14,8 @@ namespace SeriesAngularModel
 
         public DataBase()
         {
-            minibd.Add(new SerieDTO(2, "Breaking Bad", "Serie de yonkis", "Angular/bbdd/img/bb.jpg", 8.5f));
-            minibd.Add(new SerieDTO(1, "Juego de tronos", "Serie de barcos y putas", "Angular/bbdd/img/jdt.jpg", 8.8f));
+            minibd.Add(new SerieDTO(2, "Breaking Bad", "Serie de yonkis", "BHO", 2009, "Nose", "Accion" , "Angular/bbdd/img/bb.jpg", 8.5f));
+            minibd.Add(new SerieDTO(1, "Juego de tronos", "Serie de barcos y putas", "BHO", 2010, "Nose", "Drama", "Angular/bbdd/img/jdt.jpg", 8.8f));
         }
 
         public SerieDTO ObtenerSerie(int id)

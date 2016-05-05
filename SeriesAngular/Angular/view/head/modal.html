@@ -1,0 +1,33 @@
+﻿<div class="modal" data-ng-class="{oculto: !hc.login, visible: hc.login}">
+    <div class="panel">
+        <h2>
+            Login
+        </h2>
+        <form name="loginForm" novalidate>
+            <div class="fila">
+                <div class="columna-3-3 padding-top-10">
+                    <label>Email: </label>
+                </div>
+                <div class="columna-6-0">
+                    <input name="ema" type="text" data-ng-model="hc.user.nom" data-ng-class="{'input-warning': hc.nomError}" required />
+                </div>
+            </div>
+            <div class="fila">
+                <div class="columna-3-3 padding-top-10">
+                    <label>Password: </label>
+                </div>
+                <div class="columna-6-0">
+                    <input name="pas" type="password" data-ng-model="hc.user.pas" data-ng-class="{'input-warning': hc.pasError}" required />
+                </div>
+            </div>
+            <div class="fila">
+                <div class="columna-3-4">
+                    <input type="submit" class="alerta" ng-click="hc.loginDo()" value="Login" />
+                </div>
+                <div class="columna-3-0">
+                    <input type="button" class="alerta alerta-warning" ng-click="hc.loginClose()" value="Cancelar" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
