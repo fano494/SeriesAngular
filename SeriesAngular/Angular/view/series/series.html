@@ -1,43 +1,20 @@
 ﻿<div class="fila">
-    <div class="columna-6-3">
+    <div class="columna-8-1">
         <div class="panel">
             <h2>Series</h2>
-            <table class="tabla text-center" data-st-pipe="ctr.cargarDatos" data-st-table="ctr.cursos">
-                <thead>
-                    <tr>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Puntuacion
-                        </th>
-                        <th>
-                            Opciones
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-ng-repeat="serie in ctr.series">
-                        <td data-ng-bind="::serie.Id">
-
-                        </td>
-                        <td data-ng-bind="::serie.Nombre">
-
-                        </td>
-                        <td data-ng-bind="::serie.Puntuacion">
-
-                        </td>
-                        <td>
-                            <button class="boton" type="button" data-ng-click="ctr.verSerie(serie.Id)">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="galeria" data-st-pipe="ctr.cargarDatos" data-st-table="ctr.cursos">
+                <div data-ng-repeat="serie in ctr.series" class="img-vertical center">
+                    <div data-ng-click="ctr.verSerie(serie.Id)">
+                        <div class="img-descripcion">
+                            <div class="inactivo">
+                                <h3 data-ng-bind="::serie.Nombre"></h3>
+                                <p data-ng-bind="::serie.Puntuacion"> </p>
+                            </div>
+                        </div>
+                        <img data-ng-src="{{serie.Imagen}}" width="200" height="250" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="columna-3-0">
