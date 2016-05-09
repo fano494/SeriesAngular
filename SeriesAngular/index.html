@@ -9,18 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="Angular/css/bootf.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-</head>
-<body>
-    <nav class="cabecera" data-ng-include="'Angular/view/head.html'">
-    </nav>
-    <div data-ng-view class="cuerpo">
-    </div>
-    <footer class="pie" data-ng-include="'Angular/view/foot.html'">
 
-    </footer>
-    <!-- Modal -->
-    <div id="modal" data-ng-include="'Angular/view/login/login.html'">
-    </div>
     <!-- Angular scripts-->
     <script src="scripts/jquery-2.2.0.js"></script>
     <script src="scripts/angular.js"></script>
@@ -33,6 +22,7 @@
     <!-- Factory -->
     <script src="Angular/services/genericDataFactory.js"></script>
     <script src="Angular/services/seriesAngularDataFactory.js"></script>
+    <script src="Angular/services/loginFactory.js"></script>
 
     <!-- Controllers -->
     <script src="Angular/controller/headController.js"></script>
@@ -40,5 +30,19 @@
     <script src="Angular/controller/initController.js"></script>
     <script src="Angular/controller/serieController.js"></script>
     <script src="Angular/controller/seriesController.js"></script>
+
+</head>
+<body data-ng-controller="headController as hc">
+    <nav class="cabecera" data-ng-include="'Angular/view/head/head.html'">
+    </nav>
+    <div data-ng-view class="cuerpo">
+    </div>
+    <footer class="pie" data-ng-include="'Angular/view/foot.html'">
+
+    </footer>
+    <!-- Modal -->
+    <div id="modal" data-ng-include="'Angular/view/head/modal.html'">
+    </div>
+    
 </body>
 </html>

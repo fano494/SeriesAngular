@@ -1,35 +1,12 @@
-﻿<div id="loginModal" data-ng-controller="loginController as crt">
-    <div class="modal">
+﻿<div class="fila">
+    <div class="columna-6-3">
         <div class="panel">
             <h2>
-                Login
+                Pagina de inicio
             </h2>
-            <form name="loginForm" novalidate>
-                <div class="fila">
-                    <div class="columna-3-3 padding-top-10">
-                        <label>Email: </label>
-                    </div>
-                    <div class="columna-6-0">
-                        <input name="ema" type="text" data-ng-model="user.nom" required />
-                    </div>
-                </div>
-                <div class="fila">
-                    <div class="columna-3-3 padding-top-10">
-                        <label>Password: </label>
-                    </div>
-                    <div class="columna-6-0">
-                        <input name="pas" type="password" data-ng-model="user.pas" required />
-                    </div>
-                </div>
-                <div class="fila">
-                    <div class="columna-3-4">
-                        <input type="submit" class="alerta" ng-click="crt.login()" value="Login" />
-                    </div>
-                    <div class="columna-3-0">
-                        <input type="button" class="alerta alerta-warning" ng-click="crt.cerrar()" value="Cancelar" />
-                    </div>
-                </div>
-            </form>
+            <p>
+                Es necesario logearse para entrar a la pagina
+            </p>
         </div>
     </div>
 </div>

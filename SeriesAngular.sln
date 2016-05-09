@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesAngularWebAPI", "SeriesAngular\SeriesAngularWebAPI.csproj", "{99C41A72-0331-461D-8E9C-41D0A53C04FF}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,6 +11,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesAngularModel", "SeriesAngularModel\SeriesAngularModel.csproj", "{E300C5DD-882C-4468-80B4-7AC8917C1B93}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesAngularDAL", "SeriesAngularDAL\SeriesAngularDAL.csproj", "{3AE71386-E847-4F97-B958-B17845E1FD77}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E300C5DD-882C-4468-80B4-7AC8917C1B93} = {E300C5DD-882C-4468-80B4-7AC8917C1B93}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
