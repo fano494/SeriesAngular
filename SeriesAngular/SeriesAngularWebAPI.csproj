@@ -163,7 +163,8 @@
     <Content Include="Angular\services\seriesAngularDataFactory.js" />
     <Content Include="Angular\view\foot.html" />
     <Content Include="Angular\view\head\head.html" />
-    <Content Include="Angular\view\head\modal.html" />
+    <Content Include="Angular\view\head\login.html" />
+    <Content Include="Angular\view\head\register.html" />
     <Content Include="Angular\view\init.html" />
     <Content Include="Angular\view\login\login.html" />
     <Content Include="Angular\view\series\series.html" />

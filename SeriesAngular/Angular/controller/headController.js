@@ -14,6 +14,7 @@
         vm.pasError = false;
         vm.nomError = false;
         vm.inactivo = true;
+        vm.register = false;
 
         vm.cambio = function (apartado) {
             vm[vm.act] = false;
@@ -31,7 +32,37 @@
         };
         vm.loginDo = function () {
             if (vm.user.nom && vm.user.pas) {
-                console.log("Login: ", vm.user);
+                if (loginFactory.evalue(vm.user.nom, vm.user.pas)) {
+                    vm.loginClose();
+                    vm.inactivo = false;
+                    $location.path('/');
+                }
+            }
+            else {
+                if (vm.user.nom) {
+                    vm.pasError = true;
+                }
+                else {
+                    if (vm.user.pas) {
+                        vm.nomError = true;
+                    }
+                    else {
+                        vm.nomError = true;
+                        vm.pasError = true;
+                    }
+                }
+            }
+        };
+        vm.registerOpen = function () {
+            vm.register = true;
+        };
+        vm.registerClose = function () {
+            vm.register = false;
+            vm.pasError = false;
+            vm.nomError = false;
+        };
+        vm.registerDo = function () {
+            if (vm.user.nom && vm.user.pas) {
                 if (loginFactory.evalue(vm.user.nom, vm.user.pas)) {
                     vm.loginClose();
                     vm.inactivo = false;
