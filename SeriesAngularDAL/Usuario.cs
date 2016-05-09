@@ -27,6 +27,7 @@ namespace SeriesAngularDAL
         public string password { get; set; }
         public System.DateTime admission { get; set; }
         public string country { get; set; }
+        public string profile { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentario> Comentarios { get; set; }

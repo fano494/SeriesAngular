@@ -25,6 +25,7 @@ namespace SeriesAngularDAL
         public Nullable<System.DateTime> birthdate { get; set; }
         public Nullable<decimal> score { get; set; }
         public string country { get; set; }
+        public string photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Serie> Series { get; set; }

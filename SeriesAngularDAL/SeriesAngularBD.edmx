@@ -239,6 +239,7 @@
           <Property Name="score" Type="Decimal" Precision="4" Scale="2" />
           <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Series" Relationship="Self.Serie_Actores" FromRole="Actores" ToRole="Series" />
+          <Property Name="photo" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
         </EntityType>
         <EntityType Name="Capitulo">
           <Key>
@@ -279,6 +280,7 @@
           <NavigationProperty Name="Temporadas" Relationship="Self.FK_Temporadas_Series" FromRole="Series" ToRole="Temporadas" />
           <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Series" FromRole="Series" ToRole="Usuario_Series" />
           <NavigationProperty Name="Actores" Relationship="Self.Serie_Actores" FromRole="Series" ToRole="Actores" />
+          <Property Name="image" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
         </EntityType>
         <EntityType Name="Temporada">
           <Key>
@@ -315,6 +317,7 @@
           <Property Name="country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Comentarios" Relationship="Self.FK_Usuarios_Comentarios" FromRole="Usuarios" ToRole="Comentarios" />
           <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Usuarios" FromRole="Usuarios" ToRole="Usuario_Series" />
+          <Property Name="profile" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
         </EntityType>
         <Association Name="FK_Temporadas_Capitulos">
           <End Role="Temporadas" Type="SeriesDBModel.Temporada" Multiplicity="1" />
