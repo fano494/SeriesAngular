@@ -278,6 +278,11 @@ img{
     background-color: #430003;
 	box-shadow: 0px 2px 2px 0px #F11D23;
 }
+.alerta-good{
+    background-color: #7d9100;
+	box-shadow: 0px 2px 2px 0px #C9DE55;
+    border-color: #8ea106;
+}
 .clarear{
     transition: opacity linear 0.2s;
 }
