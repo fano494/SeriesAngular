@@ -6,11 +6,17 @@
         var vm = this;
         vm.cargando = true;
         vm.serie = {};
-
+        vm.serieDefault = {
+            "image": "Angular/imagenes/default.png",
+        }
         if ($routeParams.id) {
 
             seriesAngularDataFactory.getSerie($routeParams.id).then(function (data) {
                 vm.serie = data;
+                console.log(data);
+                if (!vm.serie.image) {
+                    vm.serie.image = vm.serieDefault.image;
+                }
             }).finally(function () {
                 vm.cargando = false;
             });

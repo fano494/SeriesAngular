@@ -23,9 +23,11 @@
             
             seriesAngularDataFactory.getSeries(sort, reverse, start, number, vm.filtros).then(function (data) {
                 vm.series = data.PaginaActual;
+                console.log(data);
                 tableState.pagination.totalItemCount = data.Estructura.NumeroTotalElementos;
                 tableState.pagination.numberOfPages = data.Estructura.NumeroTotalPaginas;
             }).finally(function () {
+                console.log(vm.series);
                 vm.cargando = false;
             });
             vm.tableState = tableState;

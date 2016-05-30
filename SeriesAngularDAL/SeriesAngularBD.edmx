@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SeriesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SeriesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actores">
           <Key>
             <PropertyRef Name="idactor" />
@@ -14,6 +14,7 @@
           <Property Name="birthdate" Type="datetime2" Precision="7" />
           <Property Name="score" Type="decimal" Precision="4" Scale="2" />
           <Property Name="country" Type="nvarchar" MaxLength="50" />
+          <Property Name="photo" Type="ntext" />
         </EntityType>
         <EntityType Name="Capitulos">
           <Key>
@@ -55,6 +56,7 @@
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="director" Type="nvarchar" MaxLength="40" />
           <Property Name="gender" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="image" Type="ntext" />
         </EntityType>
         <EntityType Name="Temporadas">
           <Key>
@@ -85,6 +87,7 @@
           <Property Name="password" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="admission" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="country" Type="nvarchar" MaxLength="20" />
+          <Property Name="profile" Type="ntext" />
         </EntityType>
         <Association Name="FK_Serie_Actores_Actores">
           <End Role="Actores" Type="Self.Actores" Multiplicity="1" />
@@ -224,8 +227,7 @@
             <End Role="Comentarios" EntitySet="Comentarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SeriesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -239,7 +241,7 @@
           <Property Name="score" Type="Decimal" Precision="4" Scale="2" />
           <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Series" Relationship="Self.Serie_Actores" FromRole="Actores" ToRole="Series" />
-          <Property Name="photo" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Capitulo">
           <Key>
@@ -280,7 +282,7 @@
           <NavigationProperty Name="Temporadas" Relationship="Self.FK_Temporadas_Series" FromRole="Series" ToRole="Temporadas" />
           <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Series" FromRole="Series" ToRole="Usuario_Series" />
           <NavigationProperty Name="Actores" Relationship="Self.Serie_Actores" FromRole="Series" ToRole="Actores" />
-          <Property Name="image" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Temporada">
           <Key>
@@ -317,7 +319,7 @@
           <Property Name="country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Comentarios" Relationship="Self.FK_Usuarios_Comentarios" FromRole="Usuarios" ToRole="Comentarios" />
           <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Usuarios" FromRole="Usuarios" ToRole="Usuario_Series" />
-          <Property Name="profile" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
+          <Property Name="profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Temporadas_Capitulos">
           <End Role="Temporadas" Type="SeriesDBModel.Temporada" Multiplicity="1" />
@@ -441,6 +443,7 @@
           <EntitySetMapping Name="Actores">
             <EntityTypeMapping TypeName="SeriesDBModel.Actor">
               <MappingFragment StoreEntitySet="Actores">
+                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="idactor" ColumnName="idactor" />
                 <ScalarProperty Name="actorname" ColumnName="actorname" />
                 <ScalarProperty Name="birthdate" ColumnName="birthdate" />
@@ -474,6 +477,7 @@
           <EntitySetMapping Name="Series">
             <EntityTypeMapping TypeName="SeriesDBModel.Serie">
               <MappingFragment StoreEntitySet="Series">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="idserie" ColumnName="idserie" />
                 <ScalarProperty Name="seriename" ColumnName="seriename" />
                 <ScalarProperty Name="producer" ColumnName="producer" />
@@ -508,6 +512,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="SeriesDBModel.Usuario">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="profile" ColumnName="profile" />
                 <ScalarProperty Name="iduser" ColumnName="iduser" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="username" ColumnName="username" />

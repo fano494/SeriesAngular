@@ -122,3 +122,9 @@ C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\EntityFramework.dll
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\SeriesAngularDAL.pdb
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\EntityFramework.xml
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\bin\SeriesAngularDAL.dll
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\bin\EntityFramework.dll
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\bin\SeriesAngularDAL.pdb
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\bin\EntityFramework.xml
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\bin\EntityFramework.SqlServer.dll
+C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\bin\EntityFramework.SqlServer.xml

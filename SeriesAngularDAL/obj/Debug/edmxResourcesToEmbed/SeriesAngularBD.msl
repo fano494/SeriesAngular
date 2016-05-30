@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Actores">
       <EntityTypeMapping TypeName="SeriesDBModel.Actor">
         <MappingFragment StoreEntitySet="Actores">
+          <ScalarProperty Name="photo" ColumnName="photo" />
           <ScalarProperty Name="idactor" ColumnName="idactor" />
           <ScalarProperty Name="actorname" ColumnName="actorname" />
           <ScalarProperty Name="birthdate" ColumnName="birthdate" />
@@ -37,6 +38,7 @@
     <EntitySetMapping Name="Series">
       <EntityTypeMapping TypeName="SeriesDBModel.Serie">
         <MappingFragment StoreEntitySet="Series">
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="idserie" ColumnName="idserie" />
           <ScalarProperty Name="seriename" ColumnName="seriename" />
           <ScalarProperty Name="producer" ColumnName="producer" />
@@ -71,6 +73,7 @@
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="SeriesDBModel.Usuario">
         <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="profile" ColumnName="profile" />
           <ScalarProperty Name="iduser" ColumnName="iduser" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="username" ColumnName="username" />

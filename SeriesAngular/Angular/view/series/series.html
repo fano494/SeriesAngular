@@ -2,19 +2,19 @@
     <div class="columna-8-1">
         <div class="panel">
             <div class="panel-title">Series</div>
-            <div class="galeria" data-st-pipe="ctr.cargarDatos">
+            <table class="galeria" data-st-pipe="ctr.cargarDatos" data-st-table="ctr.series">
                 <div data-ng-repeat="serie in ctr.series" class="img-vertical center">
                     <div data-ng-click="ctr.verSerie(serie.idserie)">
                         <div class="img-descripcion">
                             <div class="inactivo">
-                                <h3 data-ng-bind="::serie.nombre"></h3>
-                                <p data-ng-bind="::serie.puntuacion"> </p>
+                                <h3 data-ng-bind="::serie.seriename"></h3>
+                                <p data-ng-bind="::serie.score"> </p>
                             </div>
                         </div>
-                        <img data-ng-src="{{serie.imagen}}" width="200" height="250" />
+                        <img data-ng-src="{{serie.image}}" width="200" height="250" />
                     </div>
                 </div>
-            </div>
+            </table>
         </div>
     </div>
     <div class="columna-3-0">

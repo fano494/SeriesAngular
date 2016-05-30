@@ -1,24 +1,24 @@
 ﻿<div class="fila">
     <div class="columna-3-0">
         <div class="panel">
-            <h2 data-ng-bind="ctr.serie.Nombre"></h2>
+            <div class="panel-title" data-ng-bind="ctr.serie.seriename"></div>
             <div class="img-vertical">
-                <img data-ng-src="{{ctr.serie.Imagen}}" width="100%" height="auto"/>
+                <img data-ng-src="{{ctr.serie.image}}"/>
             </div>
         </div>
     </div>
     <div class="columna-6-0">
         <div class="panel">
-            <h2>Sinopsis</h2>
-            <p data-ng-bind="ctr.serie.Descripcion">
-            </p>
+            <div class="panel-title">Sinopsis</div>
+            <div class="panel-body" data-ng-bind="ctr.serie.description">
+            </div>
         </div>
     </div>
     <div class="columna-3-0">
         <div class="panel">
-            <h2>
+            <div class="panel-title">
                 Categorias
-            </h2>
+            </div>
             <ul class="lista-ul">
                 <li>
                     Accion
