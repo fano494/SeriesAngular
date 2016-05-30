@@ -1,33 +1,35 @@
 ﻿<div class="modal" data-ng-class="{oculto: !hc.register, visible: hc.register}">
     <div class="panel">
-        <h2>
+        <div class="panel-title">
             Register
-        </h2>
-        <form name="registerForm" novalidate>
-            <div class="fila">
-                <div class="columna-3-3 padding-top-10">
-                    <label>Email: </label>
+        </div>
+        <div class="panel-body">
+            <form name="registerForm" novalidate>
+                <div class="fila">
+                    <div class="columna-3-3 padding-top-10">
+                        <label>Email: </label>
+                    </div>
+                    <div class="columna-6-0">
+                        <input name="ema" type="text" data-ng-model="hc.user.nom" data-ng-class="{'input-warning': hc.nomError}" required />
+                    </div>
                 </div>
-                <div class="columna-6-0">
-                    <input name="ema" type="text" data-ng-model="hc.user.nom" data-ng-class="{'input-warning': hc.nomError}" required />
+                <div class="fila">
+                    <div class="columna-3-3 padding-top-10">
+                        <label>Password: </label>
+                    </div>
+                    <div class="columna-6-0">
+                        <input name="pas" type="password" data-ng-model="hc.user.pas" data-ng-class="{'input-warning': hc.pasError}" required />
+                    </div>
                 </div>
-            </div>
-            <div class="fila">
-                <div class="columna-3-3 padding-top-10">
-                    <label>Password: </label>
+                <div class="fila">
+                    <div class="columna-3-4">
+                        <input type="submit" class="alerta" ng-click="hc.registerDo()" value="Registrar" />
+                    </div>
+                    <div class="columna-3-0">
+                        <input type="button" class="alerta alerta-warning" ng-click="hc.registerClose()" value="Cancelar" />
+                    </div>
                 </div>
-                <div class="columna-6-0">
-                    <input name="pas" type="password" data-ng-model="hc.user.pas" data-ng-class="{'input-warning': hc.pasError}" required />
-                </div>
-            </div>
-            <div class="fila">
-                <div class="columna-3-4">
-                    <input type="submit" class="alerta" ng-click="hc.registerDo()" value="Login" />
-                </div>
-                <div class="columna-3-0">
-                    <input type="button" class="alerta alerta-warning" ng-click="hc.registerClose()" value="Cancelar" />
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

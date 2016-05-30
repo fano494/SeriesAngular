@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using SeriesAngularWebAPI;
 using System.Globalization;
 using System.Web.Http;
 
-namespace SeriesAngularWebAPI
+namespace AcademiaWebAPI
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

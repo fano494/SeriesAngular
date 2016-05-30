@@ -118,3 +118,7 @@ C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\bin\System.Web.Http.WebH
 C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularWebAPI.csprojResolveAssemblyReference.cache
 C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularAPI.dll
 C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngular\obj\Debug\SeriesAngularAPI.pdb
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\SeriesAngularDAL.dll
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\EntityFramework.dll
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\SeriesAngularDAL.pdb
+C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngular\bin\EntityFramework.xml

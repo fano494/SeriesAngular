@@ -3,6 +3,7 @@ using SeriesAngularModel.Filtros;
 using SeriesAngularModel.PagedList;
 using System.Collections.Generic;
 using System.Web.Http;
+using SeriesAngularDAL;
 
 namespace SeriesAngularWebAPI.Controllers
 {
@@ -22,7 +23,7 @@ namespace SeriesAngularWebAPI.Controllers
             DataBase db = new DataBase();
             return db.ObtenerSerie(id);
         }
-        /*
+        
         // POST: api/Serie
         public int Post(SerieDTO serie)
         {
@@ -35,6 +36,6 @@ namespace SeriesAngularWebAPI.Controllers
         {
             DataBase db = new DataBase();
             return db.BorrarSerie(id);
-        }*/
+        }
     }
 }

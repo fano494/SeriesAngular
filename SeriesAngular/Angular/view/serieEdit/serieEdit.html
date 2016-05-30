@@ -1,0 +1,47 @@
+﻿<div class="fila">
+    <form novalidate>
+        <div class="columna-3-0">
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="form-text">
+                        <span>Titulo </span>
+                        <input type="text" data-ng-model="ctr.serie.name" data-ng-change="ctr.active()"/>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="img-vertical">
+                        <img id="img" data-ng-src="{{ctr.serie.imagen}}" width="100%" height="auto" />
+                    </div>
+                    <div class="file clarear">
+                        <div class="alerta text-center"> Subir imagen </div>
+                        <input type="file" onchange="angular.element(this).scope().ctr.upFile(this)" />
+                        <output id="list"></output>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columna-8-0">
+            <div class="panel">
+                <div class="panel-title">
+                    Sinopsis
+                </div>
+                <div class="panel-body">
+                    <textarea class="textarea-fijo" rows="7" data-ng-model="ctr.serie.description" data-ng-change="ctr.active()"></textarea>
+                    <div class="fila">
+                        <div class="columna-6-0">
+                            <input type="submit" id="guardar" class="alerta alerta-sad inactivo" data-ng-click="ctr.save()" value="Guardar" />
+                            <input type="button" id="cancelar" class="alerta alerta-sad inactivo" data-ng-click="ctr.cancel()" value="Cancelar" />
+                        </div>
+                        <div class="columna-3-3">
+                            <div id="temporadaPlus"  class="alerta alerta-clockwork derecha boton" data-ng-click="ctr.newSeason()">
+                                <span class="inactivo">
+                                    <i class="fa fa-plus-square" aria-hidden="true"> </i> Temporada
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

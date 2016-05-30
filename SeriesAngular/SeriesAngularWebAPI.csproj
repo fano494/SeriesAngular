@@ -155,7 +155,9 @@
     <Content Include="Angular\controller\headController.js" />
     <Content Include="Angular\controller\initController.js" />
     <Content Include="Angular\controller\loginController.js" />
+    <Content Include="Angular\controller\perfilController.js" />
     <Content Include="Angular\controller\serieController.js" />
+    <Content Include="Angular\controller\serieEditController.js" />
     <Content Include="Angular\controller\seriesController.js" />
     <Content Include="Angular\css\bootf.css" />
     <Content Include="Angular\services\genericDataFactory.js" />
@@ -167,6 +169,8 @@
     <Content Include="Angular\view\head\register.html" />
     <Content Include="Angular\view\init.html" />
     <Content Include="Angular\view\login\login.html" />
+    <Content Include="Angular\view\perfil\perfil.html" />
+    <Content Include="Angular\view\serieEdit\serieEdit.html" />
     <Content Include="Angular\view\series\series.html" />
     <Content Include="Angular\view\serie\serie.html" />
     <Content Include="Content\bootstrap.css" />
@@ -214,7 +218,9 @@
     <Content Include="scripts\smart-table.js" />
     <Content Include="scripts\smart-table.min.js" />
     <None Include="scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -242,6 +248,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SeriesAngularDAL\SeriesAngularDAL.csproj">
+      <Project>{3ae71386-e847-4f97-b958-b17845e1fd77}</Project>
+      <Name>SeriesAngularDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SeriesAngularModel\SeriesAngularModel.csproj">
       <Project>{e300c5dd-882c-4468-80b4-7ac8917c1b93}</Project>
       <Name>SeriesAngularModel</Name>

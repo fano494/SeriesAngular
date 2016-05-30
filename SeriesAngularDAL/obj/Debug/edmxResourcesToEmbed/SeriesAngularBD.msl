@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SeriesDBModelStoreContainer" CdmEntityContainer="SeriesDBEntities">
+    <EntitySetMapping Name="Actores">
+      <EntityTypeMapping TypeName="SeriesDBModel.Actor">
+        <MappingFragment StoreEntitySet="Actores">
+          <ScalarProperty Name="idactor" ColumnName="idactor" />
+          <ScalarProperty Name="actorname" ColumnName="actorname" />
+          <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="country" ColumnName="country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Capitulos">
+      <EntityTypeMapping TypeName="SeriesDBModel.Capitulo">
+        <MappingFragment StoreEntitySet="Capitulos">
+          <ScalarProperty Name="idseason" ColumnName="idseason" />
+          <ScalarProperty Name="nchapter" ColumnName="nchapter" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="idchapter" ColumnName="idchapter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comentarios">
+      <EntityTypeMapping TypeName="SeriesDBModel.Comentario">
+        <MappingFragment StoreEntitySet="Comentarios">
+          <ScalarProperty Name="idcomment" ColumnName="idcomment" />
+          <ScalarProperty Name="iduser" ColumnName="iduser" />
+          <ScalarProperty Name="idserie" ColumnName="idserie" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="commentdate" ColumnName="commentdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Series">
+      <EntityTypeMapping TypeName="SeriesDBModel.Serie">
+        <MappingFragment StoreEntitySet="Series">
+          <ScalarProperty Name="idserie" ColumnName="idserie" />
+          <ScalarProperty Name="seriename" ColumnName="seriename" />
+          <ScalarProperty Name="producer" ColumnName="producer" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="director" ColumnName="director" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Temporadas">
+      <EntityTypeMapping TypeName="SeriesDBModel.Temporada">
+        <MappingFragment StoreEntitySet="Temporadas">
+          <ScalarProperty Name="idserie" ColumnName="idserie" />
+          <ScalarProperty Name="nseason" ColumnName="nseason" />
+          <ScalarProperty Name="chapters" ColumnName="chapters" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="idseanson" ColumnName="idseanson" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario_Series">
+      <EntityTypeMapping TypeName="SeriesDBModel.Usuario_Serie">
+        <MappingFragment StoreEntitySet="Usuario_Series">
+          <ScalarProperty Name="iduser" ColumnName="iduser" />
+          <ScalarProperty Name="idserie" ColumnName="idserie" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="SeriesDBModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="iduser" ColumnName="iduser" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="admission" ColumnName="admission" />
+          <ScalarProperty Name="country" ColumnName="country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Serie_Actores" TypeName="SeriesDBModel.Serie_Actores" StoreEntitySet="Serie_Actores">
+      <EndProperty Name="Actores">
+        <ScalarProperty Name="idactor" ColumnName="idactor" />
+      </EndProperty>
+      <EndProperty Name="Series">
+        <ScalarProperty Name="idserie" ColumnName="idserie" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

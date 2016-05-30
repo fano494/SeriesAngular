@@ -5,7 +5,7 @@ namespace SeriesAngularModel
 {
     public class SerieDTO
     {
-        public int idserie { get; set; }
+        public Nullable<int> idserie { get; set; }
 
         public string seriename { get; set; }
 

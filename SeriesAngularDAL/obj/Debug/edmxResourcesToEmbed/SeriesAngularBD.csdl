@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeriesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Actor">
+    <Key>
+      <PropertyRef Name="idactor" />
+    </Key>
+    <Property Name="idactor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="actorname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="birthdate" Type="DateTime" Precision="7" />
+    <Property Name="score" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Series" Relationship="Self.Serie_Actores" FromRole="Actores" ToRole="Series" />
+    <Property Name="photo" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Capitulo">
+    <Key>
+      <PropertyRef Name="idchapter" />
+    </Key>
+    <Property Name="idseason" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nchapter" Type="Int32" Nullable="false" />
+    <Property Name="score" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="idchapter" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Temporada" Relationship="Self.FK_Temporadas_Capitulos" FromRole="Capitulos" ToRole="Temporadas" />
+  </EntityType>
+  <EntityType Name="Comentario">
+    <Key>
+      <PropertyRef Name="idcomment" />
+    </Key>
+    <Property Name="idcomment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iduser" Type="Int32" Nullable="false" />
+    <Property Name="idserie" Type="Int32" Nullable="false" />
+    <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="commentdate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Serie" Relationship="Self.FK_Series_Comentarios" FromRole="Comentarios" ToRole="Series" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuarios_Comentarios" FromRole="Comentarios" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Serie">
+    <Key>
+      <PropertyRef Name="idserie" />
+    </Key>
+    <Property Name="idserie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="seriename" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="producer" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="year" Type="Int32" Nullable="false" />
+    <Property Name="score" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="director" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Comentarios" Relationship="Self.FK_Series_Comentarios" FromRole="Series" ToRole="Comentarios" />
+    <NavigationProperty Name="Temporadas" Relationship="Self.FK_Temporadas_Series" FromRole="Series" ToRole="Temporadas" />
+    <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Series" FromRole="Series" ToRole="Usuario_Series" />
+    <NavigationProperty Name="Actores" Relationship="Self.Serie_Actores" FromRole="Series" ToRole="Actores" />
+    <Property Name="image" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Temporada">
+    <Key>
+      <PropertyRef Name="idseanson" />
+    </Key>
+    <Property Name="idserie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nseason" Type="Int32" Nullable="false" />
+    <Property Name="chapters" Type="Int32" />
+    <Property Name="year" Type="Int32" />
+    <Property Name="idseanson" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Capitulos" Relationship="Self.FK_Temporadas_Capitulos" FromRole="Temporadas" ToRole="Capitulos" />
+    <NavigationProperty Name="Serie" Relationship="Self.FK_Temporadas_Series" FromRole="Temporadas" ToRole="Series" />
+  </EntityType>
+  <EntityType Name="Usuario_Serie">
+    <Key>
+      <PropertyRef Name="iduser" />
+      <PropertyRef Name="idserie" />
+    </Key>
+    <Property Name="iduser" Type="Int32" Nullable="false" />
+    <Property Name="idserie" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="Serie" Relationship="Self.FK_Usuario_Series_Series" FromRole="Usuario_Series" ToRole="Series" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Series_Usuarios" FromRole="Usuario_Series" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="iduser" />
+    </Key>
+    <Property Name="iduser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="admission" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Comentarios" Relationship="Self.FK_Usuarios_Comentarios" FromRole="Usuarios" ToRole="Comentarios" />
+    <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Usuarios" FromRole="Usuarios" ToRole="Usuario_Series" />
+    <Property Name="profile" Type="String" Nullable="false" FixedLength="false" MaxLength="500" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Temporadas_Capitulos">
+    <End Role="Temporadas" Type="SeriesDBModel.Temporada" Multiplicity="1" />
+    <End Role="Capitulos" Type="SeriesDBModel.Capitulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Temporadas">
+        <PropertyRef Name="idseanson" />
+      </Principal>
+      <Dependent Role="Capitulos">
+        <PropertyRef Name="idseason" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Series_Comentarios">
+    <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="1" />
+    <End Role="Comentarios" Type="SeriesDBModel.Comentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Series">
+        <PropertyRef Name="idserie" />
+      </Principal>
+      <Dependent Role="Comentarios">
+        <PropertyRef Name="idserie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Comentarios">
+    <End Role="Usuarios" Type="SeriesDBModel.Usuario" Multiplicity="1" />
+    <End Role="Comentarios" Type="SeriesDBModel.Comentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="iduser" />
+      </Principal>
+      <Dependent Role="Comentarios">
+        <PropertyRef Name="iduser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Temporadas_Series">
+    <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="1" />
+    <End Role="Temporadas" Type="SeriesDBModel.Temporada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Series">
+        <PropertyRef Name="idserie" />
+      </Principal>
+      <Dependent Role="Temporadas">
+        <PropertyRef Name="idserie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Series_Series">
+    <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="1" />
+    <End Role="Usuario_Series" Type="SeriesDBModel.Usuario_Serie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Series">
+        <PropertyRef Name="idserie" />
+      </Principal>
+      <Dependent Role="Usuario_Series">
+        <PropertyRef Name="idserie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Series_Usuarios">
+    <End Role="Usuarios" Type="SeriesDBModel.Usuario" Multiplicity="1" />
+    <End Role="Usuario_Series" Type="SeriesDBModel.Usuario_Serie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="iduser" />
+      </Principal>
+      <Dependent Role="Usuario_Series">
+        <PropertyRef Name="iduser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Serie_Actores">
+    <End Role="Actores" Type="SeriesDBModel.Actor" Multiplicity="*" />
+    <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="SeriesDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actores" EntityType="SeriesDBModel.Actor" />
+    <EntitySet Name="Capitulos" EntityType="SeriesDBModel.Capitulo" />
+    <EntitySet Name="Comentarios" EntityType="SeriesDBModel.Comentario" />
+    <EntitySet Name="Series" EntityType="SeriesDBModel.Serie" />
+    <EntitySet Name="Temporadas" EntityType="SeriesDBModel.Temporada" />
+    <EntitySet Name="Usuario_Series" EntityType="SeriesDBModel.Usuario_Serie" />
+    <EntitySet Name="Usuarios" EntityType="SeriesDBModel.Usuario" />
+    <AssociationSet Name="FK_Temporadas_Capitulos" Association="Self.FK_Temporadas_Capitulos">
+      <End Role="Temporadas" EntitySet="Temporadas" />
+      <End Role="Capitulos" EntitySet="Capitulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Series_Comentarios" Association="Self.FK_Series_Comentarios">
+      <End Role="Series" EntitySet="Series" />
+      <End Role="Comentarios" EntitySet="Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Comentarios" Association="Self.FK_Usuarios_Comentarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Comentarios" EntitySet="Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Temporadas_Series" Association="Self.FK_Temporadas_Series">
+      <End Role="Series" EntitySet="Series" />
+      <End Role="Temporadas" EntitySet="Temporadas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Series_Series" Association="Self.FK_Usuario_Series_Series">
+      <End Role="Series" EntitySet="Series" />
+      <End Role="Usuario_Series" EntitySet="Usuario_Series" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Series_Usuarios" Association="Self.FK_Usuario_Series_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Usuario_Series" EntitySet="Usuario_Series" />
+    </AssociationSet>
+    <AssociationSet Name="Serie_Actores" Association="Self.Serie_Actores">
+      <End Role="Actores" EntitySet="Actores" />
+      <End Role="Series" EntitySet="Series" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

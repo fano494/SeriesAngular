@@ -1,28 +1,56 @@
 ﻿<div class="fila">
     <div class="columna-3-0">
-        <div class="panel">
-            <h2 data-ng-bind="ctr.user.Username"></h2>
-            <div class="img-vertical center">
-                <img data-ng-src="{{ctr.user.Imagen}}" width="200" height="250" />
+        <form novalidate>
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="form-text">
+                        <span>Perfil</span>
+                        <input type="text" style="font-size: 16px" data-ng-model="ctr.user.userName" data-ng-change="ctr.active()"/>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="img-vertical">
+                        <img id="img" data-ng-src="{{ctr.user.imagen}}" width="100%" height="auto" />
+                    </div>
+                    <div class="file clarear">
+                        <div class="alerta text-center"> Cambiar avatar </div>
+                        <input type="file" onchange="angular.element(this).scope().ctr.upFile(this)" />
+                        <output id="list"></output>
+                    </div>
+                    <div class="fila">
+                        <div class="columna-6-0">
+                            <div class="alerta alerta-good text-center oculto" id="guardar" data-ng-click="ctr.save()">
+                                <span class="inactivo"> Guardar </span>
+                            </div>
+                        </div>
+                        <div class="columna-6-0">
+                            <div class="alerta alerta-warning text-center oculto" id="cancelar" data-ng-click="ctr.cancel()">
+                                <span class="inactivo"> Cancelar </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <div class="columna-6-0">
         <div class="panel">
-            <h2>Series</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id bibendum tellus. Nam quis ex porttitor, suscipit sapien eget, consectetur lacus. Vestibulum a orci id tellus lacinia porta in in mi. Maecenas eget dui a leo convallis facilisis eget quis ante. In scelerisque velit lectus, vestibulum euismod quam porttitor sed. Integer venenatis, urna vel porttitor fermentum, est lacus laoreet dolor, ut interdum massa quam vel ligula. Integer sed purus nisl. Sed aliquam massa ante, a commodo arcu commodo ut. Pellentesque vestibulum nibh non arcu elementum rhoncus.
-
-                Curabitur at rutrum ipsum, in euismod lectus. Nunc lorem elit, venenatis id vestibulum vel, molestie in nunc. Etiam accumsan tincidunt pellentesque. Nulla tempor mauris metus, eget dapibus eros pretium eu. Vivamus nec magna porttitor, feugiat nisi et, pulvinar ligula. Ut vitae porttitor ipsum. Fusce aliquet enim quam, at maximus nunc accumsan at. Proin nec sem laoreet, malesuada nulla ut, bibendum ante. Aliquam mattis velit eget varius ullamcorper. Quisque sit amet fringilla velit. Sed finibus elit lectus, fermentum pretium neque interdum sed. Fusce metus ligula, egestas a arcu non, ultrices gravida nulla. Sed tempor sapien at scelerisque lobortis. Suspendisse tellus nisl, posuere ac tellus eget, facilisis dictum sapien. Aliquam pharetra ornare fermentum. Donec est orci, ornare nec bibendum non, mattis eget est.
-            </p>
-        </div>
-        <div class="panel">
-            <h2>Peliculas</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id bibendum tellus. Nam quis ex porttitor, suscipit sapien eget, consectetur lacus. Vestibulum a orci id tellus lacinia porta in in mi. Maecenas eget dui a leo convallis facilisis eget quis ante. In scelerisque velit lectus, vestibulum euismod quam porttitor sed. Integer venenatis, urna vel porttitor fermentum, est lacus laoreet dolor, ut interdum massa quam vel ligula. Integer sed purus nisl. Sed aliquam massa ante, a commodo arcu commodo ut. Pellentesque vestibulum nibh non arcu elementum rhoncus.
-
-                Curabitur at rutrum ipsum, in euismod lectus. Nunc lorem elit, venenatis id vestibulum vel, molestie in nunc. Etiam accumsan tincidunt pellentesque. Nulla tempor mauris metus, eget dapibus eros pretium eu. Vivamus nec magna porttitor, feugiat nisi et, pulvinar ligula. Ut vitae porttitor ipsum. Fusce aliquet enim quam, at maximus nunc accumsan at. Proin nec sem laoreet, malesuada nulla ut, bibendum ante. Aliquam mattis velit eget varius ullamcorper. Quisque sit amet fringilla velit. Sed finibus elit lectus, fermentum pretium neque interdum sed. Fusce metus ligula, egestas a arcu non, ultrices gravida nulla. Sed tempor sapien at scelerisque lobortis. Suspendisse tellus nisl, posuere ac tellus eget, facilisis dictum sapien. Aliquam pharetra ornare fermentum. Donec est orci, ornare nec bibendum non, mattis eget est.
-            </p>
+            <div class="panel-title">
+                Series
+            </div>
+            <div class="galeria panel-body">
+                <div data-ng-repeat="serie in ctr.user.series" class="img-vertical center">
+                    <div data-ng-click="ctr.verSerie(serie.idserie)">
+                        <div class="img-descripcion">
+                            <div class="inactivo">
+                                <h3 data-ng-bind="::serie.name"></h3>
+                                <p data-ng-bind="::serie.puntuacion"> </p>
+                            </div>
+                        </div>
+                        <img data-ng-src="{{serie.imagen}}" width="200" height="250" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

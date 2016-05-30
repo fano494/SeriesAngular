@@ -57,7 +57,8 @@
     <Compile Include="Capitulo.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataBase.cs" />
+    <Compile Include="Mapping.cs" />
     <Compile Include="Comentario.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
@@ -97,7 +98,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="SeriesAngularBD.edmx.diagram">
       <DependentUpon>SeriesAngularBD.edmx</DependentUpon>
@@ -117,6 +120,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SeriesAngularModel\SeriesAngularModel.csproj">
+      <Project>{E300C5DD-882C-4468-80B4-7AC8917C1B93}</Project>
+      <Name>SeriesAngularModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

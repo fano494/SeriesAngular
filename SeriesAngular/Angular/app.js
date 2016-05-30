@@ -13,6 +13,11 @@
                 controller: 'loginController',
                 controllerAs: 'ctr',
                 label: 'Login'
+            }).when('/perfil', {
+                templateUrl: 'Angular/view/perfil/perfil.html',
+                controller: 'perfilController',
+                controllerAs: 'ctr',
+                label: 'Perfil'
             }).when('/series', {
                 templateUrl: 'Angular/view/series/series.html',
                 controller: 'seriesController',
@@ -23,6 +28,11 @@
                 controller: 'serieController',
                 controllerAs: 'ctr',
                 label: 'Serie'
+            }).when('/serieEdit', {
+                templateUrl: 'Angular/view/serieEdit/serieEdit.html',
+                controller: 'serieEditController',
+                controllerAs: 'ctr',
+                label: 'SerieEdit'
             }).otherwise({
                 redirectTo: '/'
             });

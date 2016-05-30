@@ -19,6 +19,9 @@ img{
     vertical-align: middle;
     border: 0;
 }
+.derecha{
+    float: right !important;
+}
 .no-seleccionable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -26,6 +29,13 @@ img{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none !important;
+}
+.textarea-fijo {
+    resize: none;
+    padding: 5px;
+    margin:0;
+    width: 100%;
+    box-sizing: border-box;
 }
 .inactivo{
     pointer-events: none !important;
@@ -50,13 +60,6 @@ img{
 }
 .cabecera-menu > ul{
 	margin: 0px;
-}
-.boton, .cabecera-boton{
-    display: inline-block;
-    padding: 3px 10% 3px 10%;
-    box-shadow: 0px 2px 2px 0px #049dbf;
-	border: 1px solid #03658c;
-	border-radius: 0px;
 }
 .cabecera-boton{
     -webkit-margin-before: 1em;
@@ -103,7 +106,7 @@ img{
     width: 100%;
 }
 /* ---- COLUMNA ---- */
-.columna-3-0, .columna-3-3, .columna-6-0, .columna-6-3, .columna-9-3, .columna-8-1, .columna-8-2,.columna-8-3, .columna-3-4{
+.columna-3-0, .columna-3-3, .columna-6-0, .columna-6-3, .columna-9-3, .columna-8-0, .columna-8-1, .columna-8-2,.columna-8-3, .columna-3-4, .columna-9-0{
 	float: left;
 	clear: right;
 }
@@ -118,10 +121,10 @@ img{
 .columna-6-0, .columna-6-3{
 	width: 50%;
 }
-.columna-8-1, .columna-8-2, .columna-8-3{
+.columna-8-0, .columna-8-1, .columna-8-2, .columna-8-3{
 	width: 66.67%;
 }
-.columna-9-3, .columna-9-2{
+.columna-9-0, .columna-9-3, .columna-9-2{
 	width: 75%;
 }
 /* ---- COL MAR ---- */
@@ -224,13 +227,13 @@ img{
     box-shadow: 0px 2px 2px 0px #666;
     background-color: #f1f2eb;
 }
-.panel input{
-    display: block;
-    border: 1px solid #03658c;
+.boton, .cabecera-boton{
+    display: inline-block;
+    padding: 3px 10% 3px 10%;
+    box-shadow: 0px 2px 2px 0px #049dbf;
+	border: 1px solid #03658c;
 	border-radius: 0px;
-    padding: 5px;
-    width: auto;
-    margin: 5px 5px 5px 10px; 
+    margin-top: 20px;
 }
 .input-warning{
     border-color: #F11D23 !important;
@@ -240,36 +243,82 @@ img{
     border-color: #F11D23 !important;
 	box-shadow: 0px 0px 1px 0px #F11D23 !important;
 }
+.file{
+    position: relative;
+    font-size: 16px !important;
+}
+.file > div:hover{
+    opacity: 1;
+}
+.file > input{
+    position: absolute;
+    top: 0;
+    margin: 0!important;
+    width: 100%!important;
+    height: 100%!important;
+    left: 0;
+    padding: 0px !important;
+    opacity: 0 !important;
+    box-sizing: border-box !important;
+}
+.panel input{
+    display: block;
+    border: 1px solid #03658c;
+	border-radius: 0px;
+    padding: 5px;
+    width: auto;
+    margin: 5px 5px 5px 10px; 
+}
 .panel input[type="submit"],.panel input[type="button"]{
     width: 10vw;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 10px;
     display: inline-block;
     border: 0px;
 }
-.panel > h2{
+.panel-title{
 	background-color:#03658c;
 	margin: 0px;
 	padding: 10px;
 	color:#f1f2eb;
-    margin-bottom: 25px;
+    font-size: 1.5em;
+    font-weight:bold;
+    margin-bottom: 3vh;
 }
-.panel > h3{
+.panel-title > h3{
 	float: right;
 	color:#f1f2eb;
 	margin: 0px;
 	padding: 10px;
 }
-.panel > h4{
+.panel-title > h4{
 	padding-left: 20px;
 	margin-bottom: 0px;
 }
-.panel > p{
+.panel > p, .panel-body{
 	font-size: 14px;
-	padding: 0px 10px 10px 10px;
+	padding: 0vh 1vw 4vh 1vw;
 }
-.alerta, .cabecera-boton, .cargando, .boton{
+.form-text{
+    width: 100%;
+    display: block;
+    padding: 0;
+    box-sizing: border-box;
+}
+.form-text span{
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+.form-text input{
+    padding: 3px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+.alerta, .cabecera-boton, .cargando{
 	background-color: #011826;
 	color: #f1f2eb;
 	transition: opacity linear 0.2s;
@@ -277,11 +326,22 @@ img{
 .alerta-warning{
     background-color: #430003;
 	box-shadow: 0px 2px 2px 0px #F11D23;
+    border-color: #430003;
 }
 .alerta-good{
     background-color: #7d9100;
-	box-shadow: 0px 2px 2px 0px #C9DE55;
+	box-shadow: 0px 2px 2px 0px #85DB18;
     border-color: #8ea106;
+}
+.alerta-sad{
+    background-color: #aaaaaa;
+	box-shadow: 0px 2px 2px 0px #777777;
+    border-color: #aaaaaa;
+}
+.alerta-clockwork{
+    background-color: #FD7400;
+	box-shadow: 0px 2px 2px 0px #FF2D00;
+    border-color: #FF8C00;
 }
 .clarear{
     transition: opacity linear 0.2s;
@@ -343,11 +403,13 @@ img{
 	display: inline-block;
 	padding: 0px 2vw 0px 2vw;
 }
-.oculto{
+.oculto{ 
     display: none !important;
+    opacity: 0;
 }
 .visible{
     display: block !important;
+    opacity: 1;
 }
 .padding-top-10{
     padding-top: 10px;

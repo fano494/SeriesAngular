@@ -8,23 +8,18 @@ namespace SeriesAngularModel
 {
     public class UsuarioDTO
     {
-        public Nullable<int> Id { get; set; }
+        public int iduser { get; set; }
 
-        public string Email { get; set; }
+        public string email { get; set; }
 
-        public string Password { get; set; }
+        public string username { get; set; }
 
-        public string Admission { get; set; }
+        public string password { get; set; }
 
-        public string Country { get; set; }
+        public System.DateTime admission { get; set; }
 
-        public UsuarioDTO(int id, string email, string password, string admission, string country)
-        {
-            Id = id;
-            Email = email;
-            Password = password;
-            Admission = admission;
-            Country = country;
-        }
+        public string country { get; set; }
+
+        public string profile { get; set; }
     }
 }
