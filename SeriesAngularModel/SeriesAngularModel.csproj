@@ -51,7 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemporadaDTO.cs" />
     <Compile Include="UsuarioDTO.cs" />
-    <Compile Include="Usuario_SerieDTO.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
