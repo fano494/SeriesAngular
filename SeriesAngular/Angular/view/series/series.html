@@ -3,7 +3,7 @@
         <div class="panel">
             <div class="panel-title">Series</div>
             <table class="galeria" data-st-pipe="ctr.cargarDatos" data-st-table="ctr.series">
-                <div data-ng-repeat="serie in ctr.series" class="img-vertical center">
+                <div data-ng-repeat="serie in ctr.series" class="center img-tam-fijo">
                     <div data-ng-click="ctr.verSerie(serie.idserie)">
                         <div class="img-descripcion">
                             <div class="inactivo">
@@ -19,9 +19,9 @@
     </div>
     <div class="columna-3-0">
         <div class="panel">
-            <h2>
+            <div class="panel-title">
                 Categorias
-            </h2>
+            </div>
             <ul class="lista-ul">
                 <li>
                     Accion
@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-<div class="modal text-center" data-ng-class="{visible: ctr.cargando, oculto: !ctr.cargando}">
+<div class="modal text-center" data-ng-class="{visible: ctr.load, oculto: !ctr.load}">
     <div class="cargando margin-top-15">
         <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
         <span>Cargando</span>

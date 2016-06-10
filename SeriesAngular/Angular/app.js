@@ -13,7 +13,7 @@
                 controller: 'loginController',
                 controllerAs: 'ctr',
                 label: 'Login'
-            }).when('/perfil', {
+            }).when('/perfil/:id', {
                 templateUrl: 'Angular/view/perfil/perfil.html',
                 controller: 'perfilController',
                 controllerAs: 'ctr',

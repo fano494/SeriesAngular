@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeriesAngularModel
 {
-    class ComentarioDTO
+    public class ComentarioDTO
     {
         public int idcomment { get; set; }
 

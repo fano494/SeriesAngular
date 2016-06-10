@@ -157,7 +157,7 @@ img{
     width: fit-content;
     margin: auto;
 }
-.img-redonda, .img-cuadrada, .img-vertical{
+.img-redonda, .img-cuadrada, .img-vertical, .img-tam-fijo{
     display: inline-block;
     position: relative;
     max-width: 100%;
@@ -167,6 +167,10 @@ img{
 	margin: 1vh 1vw 1vh 1vw;
 	background-color: #fff;
     overflow: hidden;
+}
+.img-redonda img, .img-cuadrada img, .img-vertical img{
+    height: auto;
+    width: 100%;
 }
 .img-redonda{
     padding: 0;

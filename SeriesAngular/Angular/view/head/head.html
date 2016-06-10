@@ -13,7 +13,7 @@
                 <a href="#/series" data-ng-click="hc.cambio('ser')">series</a>
             </li>
             <li data-ng-class="{marca: hc.rec, libre:!hc.rec, oculto: hc.inactivo}">
-                <a href="#/" data-ng-click="hc.cambio('rec')">recomendaciones</a>
+                <a href="#/perfil/{{hc.iduser}}" data-ng-click="hc.cambio('rec')">perfil</a>
             </li>
         </ul>
     </div>

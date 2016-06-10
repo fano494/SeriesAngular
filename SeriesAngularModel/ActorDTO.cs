@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeriesAngularModel
 {
-    class ActorDTO
+    public class ActorDTO
     {
         public int idactor { get; set; }
 

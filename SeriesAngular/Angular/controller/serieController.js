@@ -10,7 +10,7 @@
             "image": "Angular/imagenes/default.png",
         }
         if ($routeParams.id) {
-
+            
             seriesAngularDataFactory.getSerie($routeParams.id).then(function (data) {
                 vm.serie = data;
                 console.log(data);
@@ -20,6 +20,10 @@
             }).finally(function () {
                 vm.cargando = false;
             });
+            
+            if (!vm.serie.image) {
+                vm.serie.image = vm.serieDefault.image;
+            }
         }
         
         

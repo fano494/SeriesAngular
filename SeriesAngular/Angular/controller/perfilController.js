@@ -1,18 +1,24 @@
 ﻿(function () {
     'use strict';
-    angular.module('app').controller('perfilController', ['seriesAngularDataFactory', '$routeParams', perfilController]);
+    angular.module('app').controller('perfilController', ['seriesAngularDataFactory', 'loginFactory', perfilController]);
 
-    function perfilController(seriesAngularDataFactory, $routeParams) {
-        var vm = this;
+    function perfilController(seriesAngularDataFactory, loginFactory) {
         function clone(o) {
             return JSON.parse(JSON.stringify(o));
         };
+
+        var vm = this;
+        vm.userDefault = loginFactory.user;
         vm.load = true;
-        vm.userDefault = {
-            "imagen": "Angular/imagenes/default.png",
-            "userName": "(--default--)"
-        };
-        vm.user = clone(vm.userDefault);
+        vm.user = {};
+
+        if (!vm.userDefault) {
+            $('#msg').html('ERROR');
+        }
+        else {
+            vm.user = clone(vm.userDefault);
+            vm.load = false;
+        }
 
         vm.save = function () {
             console.log(vm.user);
@@ -21,22 +27,22 @@
         };
         vm.cancel = function () {
             vm.user = clone(vm.userDefault);
-            document.getElementById("img").src = vm.user.imagen;
+            document.getElementById("img").src = vm.user.image;
             vm.desactive();
         };
         vm.upFile = function (element) {
-            vm.imagen = element.files[0];
-            if (vm.imagen.type.match('image.*')) {
+            vm.image = element.files[0];
+            if (vm.image.type.match('image.*')) {
                 var reader = new FileReader();
                 reader.onload = (function (img) {
                     return function (res) {
-                        vm.user.imagen = res.target.result;
-                        document.getElementById("img").src = vm.user.imagen;
+                        vm.user.image = res.target.result;
+                        document.getElementById("img").src = vm.user.image;
                         vm.active();
                     };
                 })(vm.imagen);
 
-                reader.readAsDataURL(vm.imagen);
+                reader.readAsDataURL(vm.image);
             }
         };
         vm.desactive = function () {

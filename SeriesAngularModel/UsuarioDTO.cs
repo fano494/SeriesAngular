@@ -8,7 +8,7 @@ namespace SeriesAngularModel
 {
     public class UsuarioDTO
     {
-        public int iduser { get; set; }
+        public Nullable<int> iduser { get; set; }
 
         public string email { get; set; }
 
@@ -21,5 +21,9 @@ namespace SeriesAngularModel
         public string country { get; set; }
 
         public string profile { get; set; }
+
+        public ICollection<SerieDTO> series { get; set; }
+
+        public ICollection<ComentarioDTO> comentarios { get; set; }
     }
 }

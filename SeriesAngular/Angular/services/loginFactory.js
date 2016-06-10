@@ -3,19 +3,15 @@
 
     angular.module('app').factory('loginFactory', loginFactory);
 
-    function loginFactory() {
+    function loginFactory(seriesAngularDataFactory) {
         var service = {};
-
-        service.nom = '';
-        service.pas = '';
         service.login = false;
+        service.user = {};
 
-        service.evalue = function (nom, pas) {
-            service.login = nom == pas;
-            if (service.login) {
-                service.nom = nom;
-                service.pas = pas;
-            }
+        service.evalue = function (pass1, user) {
+            service.login = pass1 == user.password;
+            if (service.login)
+                service.user = user;
             return service.login;
         };
         return service;

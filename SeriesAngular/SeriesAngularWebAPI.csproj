@@ -159,7 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\app.js" />
-    <Content Include="Angular\bbdd\img\jdt.jpg" />
     <Content Include="Angular\controller\headController.js" />
     <Content Include="Angular\controller\initController.js" />
     <Content Include="Angular\controller\loginController.js" />
@@ -202,7 +201,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Angular\bbdd\miniBBDD.json" />
     <None Include="scripts\angular.intellisense.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
@@ -233,6 +231,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

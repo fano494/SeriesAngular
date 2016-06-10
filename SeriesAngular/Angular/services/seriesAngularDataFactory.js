@@ -5,8 +5,10 @@
 
     function seriesAngularDataFactory(GenericDataFactory) {
         var service = {};
+        var bdSerie = {};
 
         //SERIES
+        
         service.getSerie = function (id) {
             return GenericDataFactory.get('api/Serie/' + id);
         };
@@ -22,34 +24,26 @@
         service.deleteSerie = function (id) {
             return GenericDataFactory.remove('api/Serie/' + id);
         };
-        /*
-        //ALUMNOS
 
-        service.getAlumnos = function (sort, reverse, start, number, filtros) {
-            return GenericDataFactory.post('api/Alumno/' + sort + '/' + reverse + '/' + start + '/' + number, filtros);
+        //PERFIL
+
+        service.getUsuario = function (id) {
+            return GenericDataFactory.get('api/Usuario/' + id);
         };
 
-        service.getAlumno = function (id) {
-            return GenericDataFactory.get('api/Alumno/' + id);
+        service.getUsuarios = function (sort, reverse, start, number, filtros) {
+            return GenericDataFactory.post('api/Usuario/' + sort + '/' + reverse + '/' + start + '/' + number, filtros);
         };
 
-        service.saveAlumno = function (alumnoToSave) {
-            return GenericDataFactory.post('api/Alumno', alumnoToSave);
+        service.saveUsuario = function (serie) {
+            return GenericDataFactory.post('api/Usuario', serie);
         };
 
-        service.deleteAlumno = function (id) {
-            return GenericDataFactory.remove('api/Alumno/' + id);
+        service.deleteUsuario = function (id) {
+            return GenericDataFactory.remove('api/Usuario/' + id);
         };
+
         
-        //ALUMNO - CURSO
-
-        service.addAlumnoCurso = function (idCurso, idAlumno) {
-            return GenericDataFactory.post('api/Curso/' + idCurso + '/Alumno/' + idAlumno);
-        };
-
-        service.deleteAlumnoCurso = function (idCurso, idAlumno) {
-            return GenericDataFactory.remove('api/Curso/' + idCurso + '/Alumno/' + idAlumno);
-        };*/
         
         return service;
     };

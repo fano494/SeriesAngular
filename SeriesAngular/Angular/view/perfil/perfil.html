@@ -5,12 +5,12 @@
                 <div class="panel-title">
                     <div class="form-text">
                         <span>Perfil</span>
-                        <input type="text" style="font-size: 16px" data-ng-model="ctr.user.userName" data-ng-change="ctr.active()"/>
+                        <input type="text" style="font-size: 16px" data-ng-model="ctr.user.username" data-ng-change="ctr.active()"/>
                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="img-vertical">
-                        <img id="img" data-ng-src="{{ctr.user.imagen}}" width="100%" height="auto" />
+                        <img id="img" data-ng-src="{{ctr.user.image}}"/>
                     </div>
                     <div class="file clarear">
                         <div class="alerta text-center"> Cambiar avatar </div>
@@ -39,18 +39,24 @@
                 Series
             </div>
             <div class="galeria panel-body">
-                <div data-ng-repeat="serie in ctr.user.series" class="img-vertical center">
+                <div data-ng-repeat="serie in ctr.user.series" class="img-tam-fijo center">
                     <div data-ng-click="ctr.verSerie(serie.idserie)">
                         <div class="img-descripcion">
                             <div class="inactivo">
                                 <h3 data-ng-bind="::serie.name"></h3>
-                                <p data-ng-bind="::serie.puntuacion"> </p>
+                                <p data-ng-bind="::serie.puntuation"> </p>
                             </div>
                         </div>
-                        <img data-ng-src="{{serie.imagen}}" width="200" height="250" />
+                        <img data-ng-src="{{serie.image}}" width="200" height="250" />
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="modal text-center" data-ng-class="{visible: ctr.load, oculto: !ctr.load}">
+    <div class="cargando margin-top-15">
+        <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+        <span id="msg">Cargando</span>
     </div>
 </div>

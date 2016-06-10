@@ -44,6 +44,7 @@
     <Compile Include="CapituloDTO.cs" />
     <Compile Include="ComentarioDTO.cs" />
     <Compile Include="Filtros\SerieFiltroDTO.cs" />
+    <Compile Include="Filtros\UsuarioFiltroDTO.cs" />
     <Compile Include="PagedList\Estructura.cs" />
     <Compile Include="PagedList\PagedList.cs" />
     <Compile Include="PagedList\Utils.cs" />

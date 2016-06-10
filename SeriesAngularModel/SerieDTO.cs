@@ -22,5 +22,9 @@ namespace SeriesAngularModel
         public string gender { get; set; }
 
         public string image { get; set; }
+
+        public ICollection<ActorDTO> actores { get; set; }
+
+        public ICollection<ComentarioDTO> comentarios { get; set; }
     }
 }

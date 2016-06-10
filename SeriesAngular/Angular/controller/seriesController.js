@@ -26,11 +26,12 @@
                 console.log(data);
                 tableState.pagination.totalItemCount = data.Estructura.NumeroTotalElementos;
                 tableState.pagination.numberOfPages = data.Estructura.NumeroTotalPaginas;
+                vm.tableState = tableState;
             }).finally(function () {
                 console.log(vm.series);
                 vm.cargando = false;
             });
-            vm.tableState = tableState;
+  
         };
         vm.verSerie = function (id) {
             $location.path('/serie/' + id);
