@@ -10,15 +10,3 @@ C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularDAL\
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularDAL\obj\Debug\SeriesAngularDAL.csprojResolveAssemblyReference.cache
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularDAL\obj\Debug\SeriesAngularDAL.dll
 C:\Users\Fano\Proyectos\Angular\Pruebas\Ejemplo2\SeriesAngular\SeriesAngularDAL\obj\Debug\SeriesAngularDAL.pdb
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\SeriesAngularDAL.dll.config
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\SeriesAngularDAL.dll
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\SeriesAngularDAL.pdb
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\EntityFramework.dll
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\SeriesAngularModel.dll
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\SeriesAngularModel.pdb
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\EntityFramework.xml
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\obj\Debug\SeriesAngularDAL.csprojResolveAssemblyReference.cache
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\obj\Debug\SeriesAngularDAL.dll
-C:\Users\asier\Source\Repos\SeriesAngular\SeriesAngularDAL\obj\Debug\SeriesAngularDAL.pdb

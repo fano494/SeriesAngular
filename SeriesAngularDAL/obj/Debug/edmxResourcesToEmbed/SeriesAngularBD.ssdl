@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SeriesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="SeriesAngularModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Actores">
     <Key>
       <PropertyRef Name="idactor" />
     </Key>
     <Property Name="idactor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="actorname" Type="nvarchar" MaxLength="40" Nullable="false" />
-    <Property Name="birthdate" Type="datetime2" Precision="7" />
+    <Property Name="birthdate" Type="datetime" />
     <Property Name="score" Type="decimal" Precision="4" Scale="2" />
     <Property Name="country" Type="nvarchar" MaxLength="50" />
-    <Property Name="photo" Type="ntext" />
+    <Property Name="photo" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Capitulos">
     <Key>
@@ -29,15 +29,15 @@
     <Property Name="iduser" Type="int" Nullable="false" />
     <Property Name="idserie" Type="int" Nullable="false" />
     <Property Name="comment" Type="nvarchar" MaxLength="250" Nullable="false" />
-    <Property Name="commentdate" Type="datetime2" Precision="0" />
+    <Property Name="commentdate" Type="datetime" />
   </EntityType>
   <EntityType Name="Serie_Actores">
     <Key>
-      <PropertyRef Name="idserie" />
-      <PropertyRef Name="idactor" />
+      <PropertyRef Name="Actores_idactor" />
+      <PropertyRef Name="Series_idserie" />
     </Key>
-    <Property Name="idserie" Type="int" Nullable="false" />
-    <Property Name="idactor" Type="int" Nullable="false" />
+    <Property Name="Actores_idactor" Type="int" Nullable="false" />
+    <Property Name="Series_idserie" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Series">
     <Key>
@@ -51,7 +51,17 @@
     <Property Name="description" Type="nvarchar(max)" />
     <Property Name="director" Type="nvarchar" MaxLength="40" />
     <Property Name="gender" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="image" Type="ntext" />
+    <Property Name="image" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Temporadas">
     <Key>
@@ -70,7 +80,7 @@
     </Key>
     <Property Name="iduser" Type="int" Nullable="false" />
     <Property Name="idserie" Type="int" Nullable="false" />
-    <Property Name="date" Type="datetime2" Precision="7" />
+    <Property Name="date" Type="datetime" />
   </EntityType>
   <EntityType Name="Usuarios">
     <Key>
@@ -80,9 +90,9 @@
     <Property Name="email" Type="nvarchar" MaxLength="25" Nullable="false" />
     <Property Name="username" Type="nvarchar" MaxLength="16" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="16" Nullable="false" />
-    <Property Name="admission" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="admission" Type="datetime" Nullable="false" />
     <Property Name="country" Type="nvarchar" MaxLength="20" />
-    <Property Name="profile" Type="ntext" />
+    <Property Name="profile" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_Serie_Actores_Actores">
     <End Role="Actores" Type="Self.Actores" Multiplicity="1" />
@@ -92,7 +102,7 @@
         <PropertyRef Name="idactor" />
       </Principal>
       <Dependent Role="Serie_Actores">
-        <PropertyRef Name="idactor" />
+        <PropertyRef Name="Actores_idactor" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -104,7 +114,7 @@
         <PropertyRef Name="idserie" />
       </Principal>
       <Dependent Role="Serie_Actores">
-        <PropertyRef Name="idserie" />
+        <PropertyRef Name="Series_idserie" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -180,12 +190,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SeriesDBModelStoreContainer">
+  <EntityContainer Name="SeriesAngularModelStoreContainer">
     <EntitySet Name="Actores" EntityType="Self.Actores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Capitulos" EntityType="Self.Capitulos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Serie_Actores" EntityType="Self.Serie_Actores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Series" EntityType="Self.Series" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Temporadas" EntityType="Self.Temporadas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario_Series" EntityType="Self.Usuario_Series" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />

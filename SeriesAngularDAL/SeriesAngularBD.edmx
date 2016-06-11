@@ -4,17 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SeriesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SeriesAngularModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actores">
           <Key>
             <PropertyRef Name="idactor" />
           </Key>
           <Property Name="idactor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="actorname" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="birthdate" Type="datetime2" Precision="7" />
+          <Property Name="birthdate" Type="datetime" />
           <Property Name="score" Type="decimal" Precision="4" Scale="2" />
           <Property Name="country" Type="nvarchar" MaxLength="50" />
-          <Property Name="photo" Type="ntext" />
+          <Property Name="photo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Capitulos">
           <Key>
@@ -34,15 +34,15 @@
           <Property Name="iduser" Type="int" Nullable="false" />
           <Property Name="idserie" Type="int" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="commentdate" Type="datetime2" Precision="0" />
+          <Property Name="commentdate" Type="datetime" />
         </EntityType>
         <EntityType Name="Serie_Actores">
           <Key>
-            <PropertyRef Name="idserie" />
-            <PropertyRef Name="idactor" />
+            <PropertyRef Name="Actores_idactor" />
+            <PropertyRef Name="Series_idserie" />
           </Key>
-          <Property Name="idserie" Type="int" Nullable="false" />
-          <Property Name="idactor" Type="int" Nullable="false" />
+          <Property Name="Actores_idactor" Type="int" Nullable="false" />
+          <Property Name="Series_idserie" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Series">
           <Key>
@@ -56,7 +56,17 @@
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="director" Type="nvarchar" MaxLength="40" />
           <Property Name="gender" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="image" Type="ntext" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Temporadas">
           <Key>
@@ -75,7 +85,7 @@
           </Key>
           <Property Name="iduser" Type="int" Nullable="false" />
           <Property Name="idserie" Type="int" Nullable="false" />
-          <Property Name="date" Type="datetime2" Precision="7" />
+          <Property Name="date" Type="datetime" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -85,9 +95,9 @@
           <Property Name="email" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="username" Type="nvarchar" MaxLength="16" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="16" Nullable="false" />
-          <Property Name="admission" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="admission" Type="datetime" Nullable="false" />
           <Property Name="country" Type="nvarchar" MaxLength="20" />
-          <Property Name="profile" Type="ntext" />
+          <Property Name="profile" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Serie_Actores_Actores">
           <End Role="Actores" Type="Self.Actores" Multiplicity="1" />
@@ -97,7 +107,7 @@
               <PropertyRef Name="idactor" />
             </Principal>
             <Dependent Role="Serie_Actores">
-              <PropertyRef Name="idactor" />
+              <PropertyRef Name="Actores_idactor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -109,7 +119,7 @@
               <PropertyRef Name="idserie" />
             </Principal>
             <Dependent Role="Serie_Actores">
-              <PropertyRef Name="idserie" />
+              <PropertyRef Name="Series_idserie" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -185,12 +195,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SeriesDBModelStoreContainer">
+        <EntityContainer Name="SeriesAngularModelStoreContainer">
           <EntitySet Name="Actores" EntityType="Self.Actores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Capitulos" EntityType="Self.Capitulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Serie_Actores" EntityType="Self.Serie_Actores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Series" EntityType="Self.Series" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Temporadas" EntityType="Self.Temporadas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario_Series" EntityType="Self.Usuario_Series" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
@@ -227,23 +238,24 @@
             <End Role="Comentarios" EntitySet="Comentarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SeriesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Actor">
+      <Schema Namespace="SeriesAngularModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actores">
           <Key>
             <PropertyRef Name="idactor" />
           </Key>
           <Property Name="idactor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="actorname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="birthdate" Type="DateTime" Precision="7" />
+          <Property Name="birthdate" Type="DateTime" Precision="3" />
           <Property Name="score" Type="Decimal" Precision="4" Scale="2" />
           <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Series" Relationship="Self.Serie_Actores" FromRole="Actores" ToRole="Series" />
           <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Series" Relationship="Self.Serie_Actores" FromRole="Actores" ToRole="Series" />
         </EntityType>
-        <EntityType Name="Capitulo">
+        <EntityType Name="Capitulos">
           <Key>
             <PropertyRef Name="idchapter" />
           </Key>
@@ -252,9 +264,9 @@
           <Property Name="score" Type="Decimal" Precision="4" Scale="2" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="idchapter" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Temporada" Relationship="Self.FK_Temporadas_Capitulos" FromRole="Capitulos" ToRole="Temporadas" />
+          <NavigationProperty Name="Temporadas" Relationship="Self.FK_Temporadas_Capitulos" FromRole="Capitulos" ToRole="Temporadas" />
         </EntityType>
-        <EntityType Name="Comentario">
+        <EntityType Name="Comentarios">
           <Key>
             <PropertyRef Name="idcomment" />
           </Key>
@@ -262,11 +274,11 @@
           <Property Name="iduser" Type="Int32" Nullable="false" />
           <Property Name="idserie" Type="Int32" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="commentdate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Serie" Relationship="Self.FK_Series_Comentarios" FromRole="Comentarios" ToRole="Series" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuarios_Comentarios" FromRole="Comentarios" ToRole="Usuarios" />
+          <Property Name="commentdate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Series_Comentarios" FromRole="Comentarios" ToRole="Series" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Comentarios" FromRole="Comentarios" ToRole="Usuarios" />
         </EntityType>
-        <EntityType Name="Serie">
+        <EntityType Name="Series">
           <Key>
             <PropertyRef Name="idserie" />
           </Key>
@@ -278,13 +290,23 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="director" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Comentarios" Relationship="Self.FK_Series_Comentarios" FromRole="Series" ToRole="Comentarios" />
           <NavigationProperty Name="Temporadas" Relationship="Self.FK_Temporadas_Series" FromRole="Series" ToRole="Temporadas" />
           <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Series" FromRole="Series" ToRole="Usuario_Series" />
           <NavigationProperty Name="Actores" Relationship="Self.Serie_Actores" FromRole="Series" ToRole="Actores" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Temporada">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Temporadas">
           <Key>
             <PropertyRef Name="idseanson" />
           </Key>
@@ -294,20 +316,20 @@
           <Property Name="year" Type="Int32" />
           <Property Name="idseanson" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Capitulos" Relationship="Self.FK_Temporadas_Capitulos" FromRole="Temporadas" ToRole="Capitulos" />
-          <NavigationProperty Name="Serie" Relationship="Self.FK_Temporadas_Series" FromRole="Temporadas" ToRole="Series" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Temporadas_Series" FromRole="Temporadas" ToRole="Series" />
         </EntityType>
-        <EntityType Name="Usuario_Serie">
+        <EntityType Name="Usuario_Series">
           <Key>
             <PropertyRef Name="iduser" />
             <PropertyRef Name="idserie" />
           </Key>
           <Property Name="iduser" Type="Int32" Nullable="false" />
           <Property Name="idserie" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="Serie" Relationship="Self.FK_Usuario_Series_Series" FromRole="Usuario_Series" ToRole="Series" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Series_Usuarios" FromRole="Usuario_Series" ToRole="Usuarios" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Series" Relationship="Self.FK_Usuario_Series_Series" FromRole="Usuario_Series" ToRole="Series" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuario_Series_Usuarios" FromRole="Usuario_Series" ToRole="Usuarios" />
         </EntityType>
-        <EntityType Name="Usuario">
+        <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="iduser" />
           </Key>
@@ -315,15 +337,15 @@
           <Property Name="email" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="username" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="admission" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="admission" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Comentarios" Relationship="Self.FK_Usuarios_Comentarios" FromRole="Usuarios" ToRole="Comentarios" />
           <NavigationProperty Name="Usuario_Series" Relationship="Self.FK_Usuario_Series_Usuarios" FromRole="Usuarios" ToRole="Usuario_Series" />
-          <Property Name="profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Temporadas_Capitulos">
-          <End Role="Temporadas" Type="SeriesDBModel.Temporada" Multiplicity="1" />
-          <End Role="Capitulos" Type="SeriesDBModel.Capitulo" Multiplicity="*" />
+          <End Role="Temporadas" Type="Self.Temporadas" Multiplicity="1" />
+          <End Role="Capitulos" Type="Self.Capitulos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Temporadas">
               <PropertyRef Name="idseanson" />
@@ -334,8 +356,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Series_Comentarios">
-          <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="1" />
-          <End Role="Comentarios" Type="SeriesDBModel.Comentario" Multiplicity="*" />
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Series">
               <PropertyRef Name="idserie" />
@@ -346,8 +368,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuarios_Comentarios">
-          <End Role="Usuarios" Type="SeriesDBModel.Usuario" Multiplicity="1" />
-          <End Role="Comentarios" Type="SeriesDBModel.Comentario" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="iduser" />
@@ -358,8 +380,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Temporadas_Series">
-          <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="1" />
-          <End Role="Temporadas" Type="SeriesDBModel.Temporada" Multiplicity="*" />
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Temporadas" Type="Self.Temporadas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Series">
               <PropertyRef Name="idserie" />
@@ -370,8 +392,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuario_Series_Series">
-          <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="1" />
-          <End Role="Usuario_Series" Type="SeriesDBModel.Usuario_Serie" Multiplicity="*" />
+          <End Role="Series" Type="Self.Series" Multiplicity="1" />
+          <End Role="Usuario_Series" Type="Self.Usuario_Series" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Series">
               <PropertyRef Name="idserie" />
@@ -382,8 +404,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuario_Series_Usuarios">
-          <End Role="Usuarios" Type="SeriesDBModel.Usuario" Multiplicity="1" />
-          <End Role="Usuario_Series" Type="SeriesDBModel.Usuario_Serie" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Usuario_Series" Type="Self.Usuario_Series" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="iduser" />
@@ -394,17 +416,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Serie_Actores">
-          <End Role="Actores" Type="SeriesDBModel.Actor" Multiplicity="*" />
-          <End Role="Series" Type="SeriesDBModel.Serie" Multiplicity="*" />
+          <End Role="Actores" Type="Self.Actores" Multiplicity="*" />
+          <End Role="Series" Type="Self.Series" Multiplicity="*" />
         </Association>
         <EntityContainer Name="SeriesDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Actores" EntityType="SeriesDBModel.Actor" />
-          <EntitySet Name="Capitulos" EntityType="SeriesDBModel.Capitulo" />
-          <EntitySet Name="Comentarios" EntityType="SeriesDBModel.Comentario" />
-          <EntitySet Name="Series" EntityType="SeriesDBModel.Serie" />
-          <EntitySet Name="Temporadas" EntityType="SeriesDBModel.Temporada" />
-          <EntitySet Name="Usuario_Series" EntityType="SeriesDBModel.Usuario_Serie" />
-          <EntitySet Name="Usuarios" EntityType="SeriesDBModel.Usuario" />
+          <EntitySet Name="Actores" EntityType="Self.Actores" />
+          <EntitySet Name="Capitulos" EntityType="Self.Capitulos" />
+          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" />
+          <EntitySet Name="Series" EntityType="Self.Series" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Temporadas" EntityType="Self.Temporadas" />
+          <EntitySet Name="Usuario_Series" EntityType="Self.Usuario_Series" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <AssociationSet Name="FK_Temporadas_Capitulos" Association="Self.FK_Temporadas_Capitulos">
             <End Role="Temporadas" EntitySet="Temporadas" />
             <End Role="Capitulos" EntitySet="Capitulos" />
@@ -439,21 +462,21 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SeriesDBModelStoreContainer" CdmEntityContainer="SeriesDBEntities">
+        <EntityContainerMapping StorageEntityContainer="SeriesAngularModelStoreContainer" CdmEntityContainer="SeriesDBEntities">
           <EntitySetMapping Name="Actores">
-            <EntityTypeMapping TypeName="SeriesDBModel.Actor">
+            <EntityTypeMapping TypeName="SeriesAngularModel.Actores">
               <MappingFragment StoreEntitySet="Actores">
-                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="idactor" ColumnName="idactor" />
                 <ScalarProperty Name="actorname" ColumnName="actorname" />
                 <ScalarProperty Name="birthdate" ColumnName="birthdate" />
                 <ScalarProperty Name="score" ColumnName="score" />
                 <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Capitulos">
-            <EntityTypeMapping TypeName="SeriesDBModel.Capitulo">
+            <EntityTypeMapping TypeName="SeriesAngularModel.Capitulos">
               <MappingFragment StoreEntitySet="Capitulos">
                 <ScalarProperty Name="idseason" ColumnName="idseason" />
                 <ScalarProperty Name="nchapter" ColumnName="nchapter" />
@@ -464,7 +487,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comentarios">
-            <EntityTypeMapping TypeName="SeriesDBModel.Comentario">
+            <EntityTypeMapping TypeName="SeriesAngularModel.Comentarios">
               <MappingFragment StoreEntitySet="Comentarios">
                 <ScalarProperty Name="idcomment" ColumnName="idcomment" />
                 <ScalarProperty Name="iduser" ColumnName="iduser" />
@@ -475,9 +498,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Series">
-            <EntityTypeMapping TypeName="SeriesDBModel.Serie">
+            <EntityTypeMapping TypeName="SeriesAngularModel.Series">
               <MappingFragment StoreEntitySet="Series">
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="idserie" ColumnName="idserie" />
                 <ScalarProperty Name="seriename" ColumnName="seriename" />
                 <ScalarProperty Name="producer" ColumnName="producer" />
@@ -486,11 +508,23 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="director" ColumnName="director" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SeriesAngularModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Temporadas">
-            <EntityTypeMapping TypeName="SeriesDBModel.Temporada">
+            <EntityTypeMapping TypeName="SeriesAngularModel.Temporadas">
               <MappingFragment StoreEntitySet="Temporadas">
                 <ScalarProperty Name="idserie" ColumnName="idserie" />
                 <ScalarProperty Name="nseason" ColumnName="nseason" />
@@ -501,7 +535,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario_Series">
-            <EntityTypeMapping TypeName="SeriesDBModel.Usuario_Serie">
+            <EntityTypeMapping TypeName="SeriesAngularModel.Usuario_Series">
               <MappingFragment StoreEntitySet="Usuario_Series">
                 <ScalarProperty Name="iduser" ColumnName="iduser" />
                 <ScalarProperty Name="idserie" ColumnName="idserie" />
@@ -510,24 +544,24 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="SeriesDBModel.Usuario">
+            <EntityTypeMapping TypeName="SeriesAngularModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="profile" ColumnName="profile" />
                 <ScalarProperty Name="iduser" ColumnName="iduser" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="admission" ColumnName="admission" />
                 <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="profile" ColumnName="profile" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Serie_Actores" TypeName="SeriesDBModel.Serie_Actores" StoreEntitySet="Serie_Actores">
+          <AssociationSetMapping Name="Serie_Actores" TypeName="SeriesAngularModel.Serie_Actores" StoreEntitySet="Serie_Actores">
             <EndProperty Name="Actores">
-              <ScalarProperty Name="idactor" ColumnName="idactor" />
+              <ScalarProperty Name="idactor" ColumnName="Actores_idactor" />
             </EndProperty>
             <EndProperty Name="Series">
-              <ScalarProperty Name="idserie" ColumnName="idserie" />
+              <ScalarProperty Name="idserie" ColumnName="Series_idserie" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

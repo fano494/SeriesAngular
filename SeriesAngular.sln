@@ -5,16 +5,12 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesAngularWebAPI", "SeriesAngular\SeriesAngularWebAPI.csproj", "{99C41A72-0331-461D-8E9C-41D0A53C04FF}"
 	ProjectSection(ProjectDependencies) = postProject
-		{3AE71386-E847-4F97-B958-B17845E1FD77} = {3AE71386-E847-4F97-B958-B17845E1FD77}
 		{E300C5DD-882C-4468-80B4-7AC8917C1B93} = {E300C5DD-882C-4468-80B4-7AC8917C1B93}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesAngularModel", "SeriesAngularModel\SeriesAngularModel.csproj", "{E300C5DD-882C-4468-80B4-7AC8917C1B93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesAngularDAL", "SeriesAngularDAL\SeriesAngularDAL.csproj", "{3AE71386-E847-4F97-B958-B17845E1FD77}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E300C5DD-882C-4468-80B4-7AC8917C1B93} = {E300C5DD-882C-4468-80B4-7AC8917C1B93}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesAngularDAL", "SeriesAngularDAL\SeriesAngularDAL.csproj", "{190B2DBA-62F4-4B0D-886F-1EB6480942B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +26,10 @@ Global
 		{E300C5DD-882C-4468-80B4-7AC8917C1B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E300C5DD-882C-4468-80B4-7AC8917C1B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E300C5DD-882C-4468-80B4-7AC8917C1B93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AE71386-E847-4F97-B958-B17845E1FD77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AE71386-E847-4F97-B958-B17845E1FD77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AE71386-E847-4F97-B958-B17845E1FD77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AE71386-E847-4F97-B958-B17845E1FD77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{190B2DBA-62F4-4B0D-886F-1EB6480942B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190B2DBA-62F4-4B0D-886F-1EB6480942B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190B2DBA-62F4-4B0D-886F-1EB6480942B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190B2DBA-62F4-4B0D-886F-1EB6480942B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

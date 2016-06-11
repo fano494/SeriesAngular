@@ -5,12 +5,12 @@
                 <div class="panel-title">
                     <div class="form-text">
                         <span>Titulo </span>
-                        <input type="text" data-ng-model="ctr.serie.name" data-ng-change="ctr.active()"/>
+                        <input type="text" data-ng-model="ctr.serie.seriename" data-ng-change="ctr.active()" placeholder="Introduce un titulo..."/>
                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="img-vertical">
-                        <img id="img" data-ng-src="{{ctr.serie.imagen}}" width="100%" height="auto" />
+                        <img id="img" data-ng-src="{{ctr.serie.image}}" width="100%" height="auto" />
                     </div>
                     <div class="file clarear">
                         <div class="alerta text-center"> Subir imagen </div>
@@ -26,7 +26,7 @@
                     Sinopsis
                 </div>
                 <div class="panel-body">
-                    <textarea class="textarea-fijo" rows="7" data-ng-model="ctr.serie.description" data-ng-change="ctr.active()"></textarea>
+                    <textarea class="textarea-fijo" rows="7" data-ng-model="ctr.serie.description" data-ng-change="ctr.active()" placeholder="Incluye una descripcion aqui..."></textarea>
                     <div class="fila">
                         <div class="columna-6-0">
                             <input type="submit" id="guardar" class="alerta alerta-sad inactivo" data-ng-click="ctr.save()" value="Guardar" />
@@ -44,4 +44,10 @@
             </div>
         </div>
     </form>
+</div>
+<div class="modal text-center" data-ng-class="{visible: ctr.load, oculto: !ctr.load}">
+    <div class="cargando margin-top-15">
+        <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+        <span id="msg">Cargando</span>
+    </div>
 </div>

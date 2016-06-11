@@ -13,7 +13,7 @@
                 <a href="#/series" data-ng-click="hc.cambio('ser')">series</a>
             </li>
             <li data-ng-class="{marca: hc.rec, libre:!hc.rec, oculto: hc.inactivo}">
-                <a href="#/perfil/{{hc.iduser}}" data-ng-click="hc.cambio('rec')">perfil</a>
+                <a href="#/perfil/{{hc.user.username}}" data-ng-click="hc.cambio('rec')">perfil</a>
             </li>
         </ul>
     </div>
@@ -26,6 +26,11 @@
         <div class="cabecera-boton alerta-good clarear" data-ng-click="hc.registerOpen()" data-ng-class="{oculto: !hc.inactivo}">
             <span class="inactivo">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"> </i> Register
+            </span>
+        </div>
+        <div class="cabecera-boton alerta-warning clarear" data-ng-click="hc.logoutDo()" data-ng-class="{oculto: hc.inactivo}">
+            <span class="inactivo">
+                <i class="fa fa-sing-out" aria-hidden="true"> </i> Logout
             </span>
         </div>
     </div>

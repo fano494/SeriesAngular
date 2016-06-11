@@ -8,13 +8,31 @@
             return JSON.parse(JSON.stringify(o));
         };
         vm.load = true;
-        vm.serieDefault = {
-            "imagen": "Angular/imagenes/default.png",
-            "name": "(--default--)",
-            "description" : ""
-        };
-        vm.serie = clone(vm.serieDefault);
+        if (!$routeParams.id) {
+            vm.load = false;
+            vm.serieDefault = {
+                "image": "Angular/imagenes/default.png",
+                "name": "",
+                "description": ""
+            };
+            vm.serie = clone(vm.serieDefault);
+            document.getElementById("img").src = vm.serieDefault.image;
+        }
+        else {
+            vm.serieDefault = seriesAngularDataFactory.getSerie($routeParams.id).then(function (data) {
+                if (!data.seriename) {
+                    vm.load = false;
+                    vm.serieDefault = data;
+                    vm.serie = clone(vm.serieDefault);
+                    document.getElementById("img").src = vm.serieDefault.image;
+                }
+                else {
+                    $('#msg').html('ERROR');
+                }
+            });
+        }
 
+        
         vm.save = function () {
             console.log(vm.serie);
             vm.serieDefault = clone(vm.serie);
@@ -22,22 +40,22 @@
         };
         vm.cancel = function () {
             vm.serie = clone(vm.serieDefault);
-            document.getElementById("img").src = vm.serie.imagen;
+            document.getElementById("img").src = vm.serieDefault.image;
             vm.desactive();
         };
         vm.upFile = function (element) {
-            vm.imagen = element.files[0];
-            if (vm.imagen.type.match('image.*')) {
+            vm.image = element.files[0];
+            if (vm.image.type.match('image.*')) {
                 var lector = new FileReader();
                 lector.onload = (function (img) {
                         return function (res) {
-                            vm.serie.imagen = res.target.result;
-                            document.getElementById("img").src = vm.serie.imagen;
+                            vm.serie.image = res.target.result;
+                            document.getElementById("img").src = vm.serie.image;
                             vm.active();
                         };
-                })(vm.imagen);
+                })(vm.image);
 
-                lector.readAsDataURL(vm.imagen);
+                lector.readAsDataURL(vm.image);
             }
         };
         vm.desactive = function () {

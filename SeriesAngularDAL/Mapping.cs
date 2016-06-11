@@ -9,7 +9,7 @@ namespace SeriesAngularDAL
 {
     public class Mapping
     {
-        public static SerieDTO CargarSerieASerieDTO(Serie serie)
+        public static SerieDTO CargarSerieASerieDTO(Series serie)
         {
             SerieDTO serieDTO = new SerieDTO();
 
@@ -28,18 +28,18 @@ namespace SeriesAngularDAL
             return serieDTO;
         }
 
-        public static IList<SerieDTO> CargarSeriesASeriesDTO(IQueryable<Serie> series)
+        public static IList<SerieDTO> CargarSeriesASeriesDTO(IQueryable<Series> series)
         {
             IList<SerieDTO> seriesDTO = new List<SerieDTO>();
 
-            foreach (Serie serie in series)
+            foreach (Series serie in series)
             {
                 seriesDTO.Add(CargarSerieASerieDTO(serie));
             }
 
             return seriesDTO;
         }
-        public static void CargarSerieDTOASerie(SerieDTO serieDTO, Serie serie)
+        public static void CargarSerieDTOASerie(SerieDTO serieDTO, Series serie)
         {
             serie.image = serieDTO.image;
             serie.gender = serieDTO.gender;
@@ -49,47 +49,45 @@ namespace SeriesAngularDAL
             serie.year = serieDTO.year;
             serie.score = serieDTO.score;
             serie.seriename = serieDTO.seriename;
-            serie.Actores = (ICollection<Actor>) serieDTO.actores;
-            serie.Comentarios  = (ICollection<Comentario>) serieDTO.comentarios;
+            serie.Actores = (ICollection<Actores>) serieDTO.actores;
+            serie.Comentarios  = (ICollection<Comentarios>) serieDTO.comentarios;
         }
         
-        public static void CargarSerieDTO_Usuario(Serie serie, Usuario usuario)
+        public static void CargarSerieDTO_Usuario(Series serie, Usuarios usuario)
         {
-            Usuario_Serie us = new Usuario_Serie();
-            us.Usuario = usuario;
+            Usuario_Series us = new Usuario_Series();
+            us.Usuarios = usuario;
             us.iduser = usuario.iduser;
             us.date = DateTime.Today;
-            us.Serie = serie;
+            us.Series = serie;
             us.idserie = serie.idserie;
 
             usuario.Usuario_Series.Add(us);
 
         }
         
-        public static void CargarUsuarioDTOAUsuario(UsuarioDTO usuarioDTO, Usuario usuario)
+        public static void CargarUsuarioDTOAUsuario(UsuarioDTO usuarioDTO, Usuarios usuario)
         {
-            usuario.admission = usuarioDTO.admission;
             usuario.country = usuarioDTO.country;
             usuario.email = usuarioDTO.email;
-            usuario.iduser = (int) usuarioDTO.iduser;
             usuario.password = usuarioDTO.password;
             usuario.profile = usuarioDTO.profile;
             usuario.username = usuarioDTO.username;
-            usuario.Comentarios = (ICollection<Comentario>) usuarioDTO.comentarios;
+            usuario.Comentarios = (ICollection<Comentarios>) usuarioDTO.comentarios;
         }
 
-        public static ICollection<SerieDTO> CargarUsuarioDTO_Series(Usuario usuario)
+        public static ICollection<SerieDTO> CargarUsuarioDTO_Series(Usuarios usuario)
         {
             IList<SerieDTO> seriesDTO = new List<SerieDTO>();
 
-            foreach (Usuario_Serie us in usuario.Usuario_Series)
+            foreach (Usuario_Series us in usuario.Usuario_Series)
             {
-                seriesDTO.Add(CargarSerieASerieDTO(us.Serie));
+                seriesDTO.Add(CargarSerieASerieDTO(us.Series));
             }
             return seriesDTO;
         }
 
-        public static UsuarioDTO CargarUsuarioAUsuarioDTO(Usuario usuario)
+        public static UsuarioDTO CargarUsuarioAUsuarioDTO(Usuarios usuario)
         {
             UsuarioDTO usuarioDTO = new UsuarioDTO();
 
@@ -105,11 +103,11 @@ namespace SeriesAngularDAL
             return usuarioDTO;
         }
 
-        public static IList<UsuarioDTO> CargarUsuariosAUsuariosDTO(IQueryable<Usuario> usuarios)
+        public static IList<UsuarioDTO> CargarUsuariosAUsuariosDTO(IQueryable<Usuarios> usuarios)
         {
             IList<UsuarioDTO> usuariosDTO = new List<UsuarioDTO>();
 
-            foreach (Usuario usuario in usuarios)
+            foreach (Usuarios usuario in usuarios)
             {
                 usuariosDTO.Add(CargarUsuarioAUsuarioDTO(usuario));
             }

@@ -10,7 +10,7 @@
                         <label>Email: </label>
                     </div>
                     <div class="columna-6-0">
-                        <input name="ema" type="text" data-ng-model="hc.user.nom" data-ng-class="{'input-warning': hc.nomError}" required />
+                        <input name="ema" type="text" data-ng-model="hc.user.email" data-ng-class="{'input-warning': hc.emaError}" required />
                     </div>
                 </div>
                 <div class="fila">
@@ -18,7 +18,23 @@
                         <label>Password: </label>
                     </div>
                     <div class="columna-6-0">
-                        <input name="pas" type="password" data-ng-model="hc.user.pas" data-ng-class="{'input-warning': hc.pasError}" required />
+                        <input name="pas" type="password" data-ng-model="hc.user.password" data-ng-class="{'input-warning': hc.pasError}" required />
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="columna-3-3 padding-top-10">
+                        <label>Nombre: </label>
+                    </div>
+                    <div class="columna-6-0">
+                        <input name="ema" type="text" data-ng-model="hc.user.username" data-ng-class="{'input-warning': hc.nomError}" required />
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="columna-3-3 padding-top-10">
+                        <label>Pais: </label>
+                    </div>
+                    <div class="columna-6-0">
+                        <input name="pai" type="text" data-ng-model="hc.user.country" data-ng-class="{'input-warning': hc.paiError}" required />
                     </div>
                 </div>
                 <div class="fila">

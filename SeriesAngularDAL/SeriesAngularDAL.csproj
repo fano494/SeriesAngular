@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3AE71386-E847-4F97-B958-B17845E1FD77}</ProjectGuid>
+    <ProjectGuid>{190B2DBA-62F4-4B0D-886F-1EB6480942B0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SeriesAngularDAL</RootNamespace>
@@ -51,19 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actor.cs">
+    <Compile Include="Actores.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Capitulo.cs">
+    <Compile Include="Capitulos.cs">
+      <DependentUpon>SeriesAngularBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comentarios.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="Mapping.cs" />
-    <Compile Include="Comentario.cs">
-      <DependentUpon>SeriesAngularBD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serie.cs">
+    <Compile Include="Series.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
     <Compile Include="SeriesAngularBD.Context.cs">
@@ -81,13 +81,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SeriesAngularBD.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Temporada.cs">
+    <Compile Include="sysdiagrams.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Usuario.cs">
+    <Compile Include="Temporadas.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Usuario_Serie.cs">
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>SeriesAngularBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario_Series.cs">
       <DependentUpon>SeriesAngularBD.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -123,7 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeriesAngularModel\SeriesAngularModel.csproj">
-      <Project>{E300C5DD-882C-4468-80B4-7AC8917C1B93}</Project>
+      <Project>{e300c5dd-882c-4468-80b4-7ac8917c1b93}</Project>
       <Name>SeriesAngularModel</Name>
     </ProjectReference>
   </ItemGroup>

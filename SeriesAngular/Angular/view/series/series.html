@@ -1,7 +1,20 @@
 ﻿<div class="fila">
     <div class="columna-8-1">
         <div class="panel">
-            <div class="panel-title">Series</div>
+            <div class="panel-title">
+                <div class="fila">
+                    <div class="columna-6-0">
+                        Series
+                    </div>
+                    <div class="columna-3-3">
+                        <div class="boton alerta alerta-good derecha" data-ng-click="ctr.crearSerie()" style="font-size: 14px; margin: 0;">
+                            <span class="inactivo">
+                                <i class="fa fa-plus-square" aria-hidden="true"> </i> Serie
+                            </span>
+                        </div> 
+                    </div>
+                </div>
+            </div>
             <table class="galeria" data-st-pipe="ctr.cargarDatos" data-st-table="ctr.series">
                 <div data-ng-repeat="serie in ctr.series" class="center img-tam-fijo">
                     <div data-ng-click="ctr.verSerie(serie.idserie)">

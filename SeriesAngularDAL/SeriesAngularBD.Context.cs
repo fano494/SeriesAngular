@@ -25,12 +25,13 @@ namespace SeriesAngularDAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Actor> Actores { get; set; }
-        public virtual DbSet<Capitulo> Capitulos { get; set; }
-        public virtual DbSet<Comentario> Comentarios { get; set; }
-        public virtual DbSet<Serie> Series { get; set; }
-        public virtual DbSet<Temporada> Temporadas { get; set; }
-        public virtual DbSet<Usuario_Serie> Usuario_Series { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Actores> Actores { get; set; }
+        public virtual DbSet<Capitulos> Capitulos { get; set; }
+        public virtual DbSet<Comentarios> Comentarios { get; set; }
+        public virtual DbSet<Series> Series { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Temporadas> Temporadas { get; set; }
+        public virtual DbSet<Usuario_Series> Usuario_Series { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

@@ -8,12 +8,32 @@
         service.login = false;
         service.user = {};
 
-        service.evalue = function (pass1, user) {
-            service.login = pass1 == user.password;
-            if (service.login)
-                service.user = user;
-            return service.login;
+        service.evalue = function (pass, user) {
+            if (!user.email) {
+                console.log("Usuario inexistente");
+                return false;
+            }
+            else {
+                service.login = pass == user.password;
+                if (service.login) {
+                    if (!user.profile) {
+                        user.profile = "Angular/imagenes/default.png";
+                    }
+                    service.user = user;
+                }
+                return service.login;
+            }
         };
+
+        service.register = function(user){
+            service.user = user;
+            service.login = true;
+        };
+
+        service.logout = function () {
+            service.login = false;
+        }
+
         return service;
     };
 })();

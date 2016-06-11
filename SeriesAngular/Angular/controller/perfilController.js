@@ -10,24 +10,29 @@
         var vm = this;
         vm.userDefault = loginFactory.user;
         vm.load = true;
-        vm.user = {};
 
         if (!vm.userDefault) {
             $('#msg').html('ERROR');
         }
         else {
             vm.user = clone(vm.userDefault);
+            console.log(vm.user);
+            document.getElementById("img").src = vm.user.profile;
             vm.load = false;
         }
 
         vm.save = function () {
-            console.log(vm.user);
-            vm.userDefault = clone(vm.user);
-            vm.desactive();
+            vm.load = true;
+            seriesAngularDataFactory.saveUsuario(vm.user).then(function (data) {
+                loginFactory.register(vm.user);
+                vm.userDefault = clone(vm.user);
+                vm.desactive();
+                vm.load = false;
+            });
         };
         vm.cancel = function () {
             vm.user = clone(vm.userDefault);
-            document.getElementById("img").src = vm.user.image;
+            document.getElementById("img").src = vm.userDefault.profile;
             vm.desactive();
         };
         vm.upFile = function (element) {
@@ -36,8 +41,8 @@
                 var reader = new FileReader();
                 reader.onload = (function (img) {
                     return function (res) {
-                        vm.user.image = res.target.result;
-                        document.getElementById("img").src = vm.user.image;
+                        vm.user.profile = res.target.result;
+                        document.getElementById("img").src = vm.user.profile;
                         vm.active();
                     };
                 })(vm.imagen);

@@ -49,7 +49,7 @@ namespace SeriesAngularDAL
 #if DEBUG
             se.Database.Log = s => Console.WriteLine(s);
 #endif
-            Serie serie;
+            Series serie;
 
             if (serieDTO.idserie.HasValue)
             {
@@ -57,7 +57,7 @@ namespace SeriesAngularDAL
             }
             else
             {
-                serie = new Serie();
+                serie = new Series();
                 se.Series.Add(serie);
             }
 
@@ -105,13 +105,20 @@ namespace SeriesAngularDAL
         {
             SeriesDBEntities se = new SeriesDBEntities();
 
-#if DEBUG
+
             se.Database.Log = s => Console.WriteLine(s);
-#endif
+
 
             var usuario = se.Usuarios.SingleOrDefault(c => c.username == id);
 
-            return Mapping.CargarUsuarioAUsuarioDTO(usuario);
+            if (usuario == null)
+            {
+                return new UsuarioDTO();
+            }
+            else
+            {
+                return Mapping.CargarUsuarioAUsuarioDTO(usuario);
+            }
         }
 
         public int GuardarUsuario(UsuarioDTO usuarioDTO)
@@ -121,7 +128,7 @@ namespace SeriesAngularDAL
 #if DEBUG
             se.Database.Log = s => Console.WriteLine(s);
 #endif
-            Usuario usuario;
+            Usuarios usuario;
 
             if (usuarioDTO.iduser.HasValue)
             {
@@ -129,7 +136,8 @@ namespace SeriesAngularDAL
             }
             else
             {
-                usuario = new Usuario();
+                usuario = new Usuarios();
+                usuario.admission = DateTime.Today;
                 se.Usuarios.Add(usuario);
             }
 
@@ -162,8 +170,8 @@ namespace SeriesAngularDAL
 #if DEBUG
             se.Database.Log = s => Console.WriteLine(s);
 #endif
-            Serie serie = se.Series.SingleOrDefault(c => c.idserie == idserie);
-            Usuario usuario =  se.Usuarios.SingleOrDefault(c => c.iduser == iduser);
+            Series serie = se.Series.SingleOrDefault(c => c.idserie == idserie);
+            Usuarios usuario =  se.Usuarios.SingleOrDefault(c => c.iduser == iduser);
             Mapping.CargarSerieDTO_Usuario(serie, usuario);
 
             return true;

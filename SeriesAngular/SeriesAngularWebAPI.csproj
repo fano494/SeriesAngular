@@ -256,7 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeriesAngularDAL\SeriesAngularDAL.csproj">
-      <Project>{3ae71386-e847-4f97-b958-b17845e1fd77}</Project>
+      <Project>{190b2dba-62f4-4b0d-886f-1eb6480942b0}</Project>
       <Name>SeriesAngularDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SeriesAngularModel\SeriesAngularModel.csproj">

@@ -36,5 +36,8 @@
         vm.verSerie = function (id) {
             $location.path('/serie/' + id);
         };
+        vm.crearSerie = function () {
+            $location.path('/serieEdit');
+        };
       };
 })();
