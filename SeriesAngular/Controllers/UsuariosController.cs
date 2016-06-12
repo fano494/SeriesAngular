@@ -17,6 +17,15 @@ namespace SeriesAngularWebAPI.Controllers
             return db.ObtenerUsuarios(start, number, filtros);
         }
 
+        [Route("api/Usuario/{idserie}/{iduser}/{tipo}")]
+        public bool Post(int idserie, int iduser, bool tipo)
+        {
+            DataBase db = new DataBase();
+            if (tipo)
+                return db.SeguirSerie(idserie, iduser);
+            else
+                return db.DejarSerie(idserie, iduser);
+        }
         // GET: api/Usuario/Fano
         public UsuarioDTO Get(string id)
         {

@@ -43,6 +43,14 @@
             return GenericDataFactory.remove('api/Usuario/' + id);
         };
 
+        service.seguirSerie = function (idserie, iduser) {
+            return GenericDataFactory.post('api/Usuario/' + idserie + '/' + iduser + '/' + true);
+        };
+
+        service.dejarSerie = function (idserie, iduser) {
+            return GenericDataFactory.post('api/Usuario/' + idserie + '/' + iduser + '/' + false);
+        };
+
         
         
         return service;

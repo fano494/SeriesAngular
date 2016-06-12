@@ -38,8 +38,15 @@ namespace SeriesAngularDAL
 #endif
 
             var serie = se.Series.SingleOrDefault(c => c.idserie == id);
-
-            return Mapping.CargarSerieASerieDTO(serie);
+            
+            var serieDTO = Mapping.CargarSerieASerieDTO(serie);
+            serieDTO.temporadas = Mapping.CargarTemporadasATemporadasDTO(serie.Temporadas);
+            foreach(TemporadaDTO temporadaDTO in serieDTO.temporadas)
+            {
+                var tmp = serie.Temporadas.SingleOrDefault(c => c.idseanson == temporadaDTO.idseanson);
+                temporadaDTO.capitulos = Mapping.CargarCapitulosACapitulosDTO(tmp.Capitulos.AsQueryable());
+            }
+            return serieDTO;
         }
 
         public int GuardarSerie(SerieDTO serieDTO)
@@ -75,13 +82,116 @@ namespace SeriesAngularDAL
 #if DEBUG
             se.Database.Log = s => Console.WriteLine(s);
 #endif
-
-            se.Series.Remove(se.Series.SingleOrDefault(c => c.idserie == id));
+            var serie = se.Series.SingleOrDefault(c => c.idserie == id);
+            foreach (Temporadas temporada in serie.Temporadas)
+            {
+                BorrarTemporada(temporada.idseanson);
+            }
+            se.Series.Remove(serie);
 
             se.SaveChanges();
 
             return true;
         }
+
+        //----------------------------------
+        //----- Temporada
+        //----------------------------------
+
+        public int GuardarTemporada(TemporadaDTO temporadaDTO)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            Temporadas temporada;
+
+            if (temporadaDTO.idseanson.HasValue)
+            {
+                temporada = se.Temporadas.SingleOrDefault(c => c.idseanson == temporadaDTO.idseanson);
+            }
+            else
+            {
+                temporada = new Temporadas();
+                se.Temporadas.Add(temporada);
+            }
+
+            Mapping.CargarTemporadaDTOATemporada(temporadaDTO, temporada);
+            foreach(CapituloDTO capitulo in temporadaDTO.capitulos)
+            {
+                temporada.Capitulos.Add(GuardarCapitulo(capitulo));
+            }
+
+            se.SaveChanges();
+
+            return temporada.idseanson;
+        }
+
+        public bool BorrarTemporada(int id)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            var temporada = se.Temporadas.SingleOrDefault(c => c.idseanson == id);
+            foreach (Capitulos capitulo in temporada.Capitulos)
+            {
+                BorrarCapitulo(capitulo.idchapter);
+            }
+            se.Temporadas.Remove(temporada);
+
+            se.SaveChanges();
+
+            return true;
+        }
+
+        //----------------------------------
+        //----- Capitulos
+        //----------------------------------
+
+        public Capitulos GuardarCapitulo(CapituloDTO capituloDTO)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            Capitulos capitulo;
+
+            if (capituloDTO.idchapter.HasValue)
+            {
+                capitulo = se.Capitulos.SingleOrDefault(c => c.idchapter == capituloDTO.idchapter);
+            }
+            else
+            {
+                capitulo = new Capitulos();
+                se.Capitulos.Add(capitulo);
+            }
+
+            Mapping.CargarCapituloDTOACapitulo(capituloDTO, capitulo);
+
+            se.SaveChanges();
+
+            return capitulo;
+        }
+
+        public bool BorrarCapitulo(int id)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+
+            se.Capitulos.Remove(se.Capitulos.SingleOrDefault(c => c.idchapter == id));
+
+            se.SaveChanges();
+
+            return true;
+        }
+
 
         //----------------------------------
         //----- Usuarios
@@ -172,9 +282,110 @@ namespace SeriesAngularDAL
 #endif
             Series serie = se.Series.SingleOrDefault(c => c.idserie == idserie);
             Usuarios usuario =  se.Usuarios.SingleOrDefault(c => c.iduser == iduser);
-            Mapping.CargarSerieDTO_Usuario(serie, usuario);
+            se.Usuario_Series.Add(Mapping.CargarSerie_Usuario(serie, usuario));
+
+            se.SaveChanges();
 
             return true;
         }
+
+        public bool DejarSerie(int idserie, int iduser)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            se.Usuario_Series.Remove(se.Usuario_Series.SingleOrDefault(c => (c.iduser == iduser) && (c.idserie == idserie)));
+
+            se.SaveChanges();
+
+            return true;
+        }
+
+        //----------------------------------
+        //----- Comentarios
+        //----------------------------------
+        public int GuardarComentario(ComentarioDTO comentarioDTO)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            Comentarios comentario;
+
+            if (comentarioDTO.idcomment.HasValue)
+            {
+                comentario = se.Comentarios.SingleOrDefault(c => c.idcomment == comentarioDTO.idcomment);
+            }
+            else
+            {
+                comentario = new Comentarios();
+                Series serie = se.Series.SingleOrDefault(c => c.idserie == comentario.idserie);
+                Usuarios usuario = se.Usuarios.SingleOrDefault(c => c.iduser == comentario.iduser);
+                comentario.Series = serie;
+                comentario.Usuarios = usuario;
+                comentario.commentdate = DateTime.Today;
+                se.Comentarios.Add(comentario);
+            }
+
+            Mapping.CargarComentarioDTOAComentario(comentarioDTO, comentario);
+            
+
+            se.SaveChanges();
+
+            return comentario.idcomment;
+        }
+
+        public bool BorrarComentario(int idcomment)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            se.Comentarios.Remove(se.Comentarios.SingleOrDefault(c => c.idcomment == idcomment));
+
+            se.SaveChanges();
+
+            return true;
+        }
+
+        //----------------------------------
+        //----- Actores
+        //----------------------------------
+
+        public bool AsignarActor(int idserie, int idactor)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            Series serie = se.Series.SingleOrDefault(c => c.idserie == idserie);
+            Actores actor = se.Actores.SingleOrDefault(c => c.idactor == idactor);
+            serie.Actores.Add(actor);
+
+            se.SaveChanges();
+
+            return true;
+        }
+
+        public bool QuitarActor(int idserie, int idactor)
+        {
+            SeriesDBEntities se = new SeriesDBEntities();
+
+#if DEBUG
+            se.Database.Log = s => Console.WriteLine(s);
+#endif
+            Series serie = se.Series.SingleOrDefault(c => c.idserie == idserie);
+            serie.Actores.Remove(serie.Actores.SingleOrDefault(c => c.idactor == idactor));
+
+            se.SaveChanges();
+
+            return true;
+        }
+
     }
 }

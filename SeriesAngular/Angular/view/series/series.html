@@ -15,8 +15,8 @@
                     </div>
                 </div>
             </div>
-            <table class="galeria" data-st-pipe="ctr.cargarDatos" data-st-table="ctr.series">
-                <div data-ng-repeat="serie in ctr.series" class="center img-tam-fijo">
+            <div class="galeria panel-body text-center">
+                <div data-ng-repeat="serie in ctr.series" class="img-tam-fijo">
                     <div data-ng-click="ctr.verSerie(serie.idserie)">
                         <div class="img-descripcion">
                             <div class="inactivo">
@@ -27,7 +27,7 @@
                         <img data-ng-src="{{serie.image}}" width="200" height="250" />
                     </div>
                 </div>
-            </table>
+            </div>
         </div>
     </div>
     <div class="columna-3-0">

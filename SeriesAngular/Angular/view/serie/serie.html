@@ -1,16 +1,65 @@
 ﻿<div class="fila">
     <div class="columna-3-0">
         <div class="panel">
-            <div class="panel-title" data-ng-bind="ctr.serie.seriename"></div>
-            <div class="img-vertical">
-                <img data-ng-src="{{ctr.serie.image}}"/>
+            <div class="panel-title text-center" data-ng-bind="ctr.serie.seriename"></div>
+            <div class="text-center">
+                <div class="img-vertical">
+                    <img data-ng-src="{{ctr.serie.image}}" />
+                </div>
             </div>
+            <ul class="lista-ul">
+                <li class="text-center">
+                    <span data-ng-bind="ctr.serie.score"></span>
+                </li>
+                <li>
+                    Director: <span data-ng-bind="ctr.serie.director"></span>
+                </li>
+                <li>
+                    Año: <span data-ng-bind="ctr.serie.year"></span>
+                </li>
+                <li>
+                    Productor: <span data-ng-bind="ctr.serie.producer"></span>
+                </li>
+                <li>
+                    Genero: <span data-ng-bind="ctr.serie.gender"></span>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="columna-6-0">
         <div class="panel">
-            <div class="panel-title">Sinopsis</div>
-            <div class="panel-body" data-ng-bind="ctr.serie.description">
+            <div class="panel-title">
+                <div class="fila">
+                    <div class="columna-3-0">
+                        Sinopsis
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" >
+                <div data-ng-bind="ctr.serie.description">
+
+                </div>
+                <div class="fila">
+                    <div class="columna-6-0">
+                        <div class="boton alerta alerta-good" data-ng-class="{oculto: ctr.follow}" data-ng-click="ctr.seguirSerie()">
+                            <span class="inactivo">
+                                <i class="fa fa-eye" aria-hidden="true"> </i> Seguir
+                            </span>
+                        </div>
+                        <div class="boton alerta alerta-sad" data-ng-class="{oculto: !ctr.follow}" data-ng-click="ctr.dejarSerie()">
+                            <span class="inactivo">
+                                <i class="fa fa-eye-slash" aria-hidden="true"> </i> Dejar
+                            </span>
+                        </div>
+                    </div>
+                    <div class="columna-3-3">
+                        <div class="boton alerta alerta-clockwork derecha" data-ng-click="ctr.editarSerie()">
+                            <span class="inactivo">
+                                <i class="fa fa-pencil-square" aria-hidden="true"> </i> Editar
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

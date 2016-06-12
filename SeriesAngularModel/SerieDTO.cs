@@ -26,5 +26,8 @@ namespace SeriesAngularModel
         public ICollection<ActorDTO> actores { get; set; }
 
         public ICollection<ComentarioDTO> comentarios { get; set; }
+
+        public ICollection<TemporadaDTO> temporadas { get; set; }
+
     }
 }

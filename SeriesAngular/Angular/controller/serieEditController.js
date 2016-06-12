@@ -20,9 +20,12 @@
         }
         else {
             vm.serieDefault = seriesAngularDataFactory.getSerie($routeParams.id).then(function (data) {
-                if (!data.seriename) {
+                console.log("Edit: ", data);
+                if (data.seriename) {
                     vm.load = false;
                     vm.serieDefault = data;
+                    if (!vm.serieDefault.image)
+                        vm.serieDefault.image = "Angular/imagenes/default.png";
                     vm.serie = clone(vm.serieDefault);
                     document.getElementById("img").src = vm.serieDefault.image;
                 }
@@ -35,8 +38,26 @@
         
         vm.save = function () {
             console.log(vm.serie);
-            vm.serieDefault = clone(vm.serie);
-            vm.desactive();
+            vm.load = true;
+            if (vm.serie.seriename &&
+               vm.serie.producer &&
+               vm.serie.director &&
+               vm.serie.gender &&
+               vm.serie.score &&
+               vm.serie.year &&
+               vm.serie.description)
+                seriesAngularDataFactory.saveSerie(vm.serie).then(function (data) {
+                    vm.load = false;
+                    vm.incomplete = false;
+                    vm.serieDefault = clone(vm.serie);
+                    vm.desactive();
+                });
+            else {
+                vm.desactive();
+                vm.load = false;
+                vm.incomplete = true;
+            }
+            
         };
         vm.cancel = function () {
             vm.serie = clone(vm.serieDefault);
@@ -73,6 +94,7 @@
             document.getElementById("guardar").classList.remove("inactivo");
             document.getElementById("cancelar").classList.add("alerta-warning");
             document.getElementById("guardar").classList.add("alerta-good");
+            vm.incomplete = false;
         };
     };
 })();

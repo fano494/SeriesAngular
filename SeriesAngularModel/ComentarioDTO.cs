@@ -8,7 +8,7 @@ namespace SeriesAngularModel
 {
     public class ComentarioDTO
     {
-        public int idcomment { get; set; }
+        public Nullable<int> idcomment { get; set; }
 
         public int iduser { get; set; }
 

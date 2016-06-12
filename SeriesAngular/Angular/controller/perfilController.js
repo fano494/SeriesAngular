@@ -1,25 +1,30 @@
 ﻿(function () {
     'use strict';
-    angular.module('app').controller('perfilController', ['seriesAngularDataFactory', 'loginFactory', perfilController]);
+    angular.module('app').controller('perfilController', ['seriesAngularDataFactory', '$location', 'loginFactory', perfilController]);
 
-    function perfilController(seriesAngularDataFactory, loginFactory) {
+    function perfilController(seriesAngularDataFactory, $location, loginFactory) {
         function clone(o) {
             return JSON.parse(JSON.stringify(o));
         };
 
         var vm = this;
-        vm.userDefault = loginFactory.user;
         vm.load = true;
 
-        if (!vm.userDefault) {
-            $('#msg').html('ERROR');
-        }
-        else {
-            vm.user = clone(vm.userDefault);
-            console.log(vm.user);
-            document.getElementById("img").src = vm.user.profile;
-            vm.load = false;
-        }
+        seriesAngularDataFactory.getUsuario(loginFactory.user.username).then(function (data) {
+            vm.userDefault = data;
+            if (!vm.userDefault) {
+                $('#msg').html('ERROR');
+            }
+            else {
+                vm.user = clone(vm.userDefault);
+                loginFactory.register(data);
+                console.log(vm.user);
+                document.getElementById("img").src = vm.user.profile;
+                vm.load = false;
+            }
+        });
+
+        
 
         vm.save = function () {
             vm.load = true;
@@ -29,6 +34,9 @@
                 vm.desactive();
                 vm.load = false;
             });
+        };
+        vm.verSerie = function (id) {
+            $location.path('/serie/' + id);
         };
         vm.cancel = function () {
             vm.user = clone(vm.userDefault);

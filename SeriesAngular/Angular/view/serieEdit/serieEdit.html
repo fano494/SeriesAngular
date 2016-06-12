@@ -9,14 +9,33 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="img-vertical">
-                        <img id="img" data-ng-src="{{ctr.serie.image}}" width="100%" height="auto" />
+                    <div class="text-center">
+                        <div class="img-vertical">
+                            <img id="img" data-ng-src="{{ctr.serie.image}}" />
+                        </div>
                     </div>
                     <div class="file clarear">
                         <div class="alerta text-center"> Subir imagen </div>
                         <input type="file" onchange="angular.element(this).scope().ctr.upFile(this)" />
                         <output id="list"></output>
                     </div>
+                    <ul class="lista-ul">
+                        <li class="text-center">
+                            Puntuacion: <input type="number" data-ng-model="ctr.serie.score" data-ng-change="ctr.active()">
+                        </li>
+                        <li>
+                            Director: <input type="text" data-ng-model="ctr.serie.director" data-ng-change="ctr.active()" placeholder="Introduce un director..." />
+                        </li>
+                        <li>
+                            Año: <input type="date" data-ng-model="ctr.serie.year" data-ng-change="ctr.active()"/>
+                        </li>
+                        <li>
+                            Productor: <input type="text" data-ng-model="ctr.serie.producer" data-ng-change="ctr.active()" placeholder="Introduce un productor..." />
+                        </li>
+                        <li>
+                            Genero: <input type="text" data-ng-model="ctr.serie.gender" data-ng-change="ctr.active()" placeholder="Introduce un genero..." />
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -28,11 +47,21 @@
                 <div class="panel-body">
                     <textarea class="textarea-fijo" rows="7" data-ng-model="ctr.serie.description" data-ng-change="ctr.active()" placeholder="Incluye una descripcion aqui..."></textarea>
                     <div class="fila">
-                        <div class="columna-6-0">
-                            <input type="submit" id="guardar" class="alerta alerta-sad inactivo" data-ng-click="ctr.save()" value="Guardar" />
-                            <input type="button" id="cancelar" class="alerta alerta-sad inactivo" data-ng-click="ctr.cancel()" value="Cancelar" />
+                        <div class="columna-5-0">
+                            <input type="submit" id="guardar" class="alerta alerta-sad inactivo clarear" data-ng-click="ctr.save()" value="Guardar" />
+                            <input type="button" id="cancelar" class="alerta alerta-sad inactivo clarear" data-ng-click="ctr.cancel()" value="Cancelar" />
                         </div>
-                        <div class="columna-3-3">
+                        <div class="columna-4-0">
+                            <div data-ng-class="{oculto: !ctr.incomplete}" style="color: #430003; margin-top: 20px; text-align: center;">
+                                <span class="inactivo">
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"> </i> HAY DATOS INCOMPLETOS!!!
+                                </span>
+                            </div>
+                            <div data-ng-class="{oculto: ctr.incomplete}">
+                                <p> </p>
+                            </div>
+                        </div>
+                        <div class="columna-3-0">
                             <div id="temporadaPlus"  class="alerta alerta-clockwork derecha boton" data-ng-click="ctr.newSeason()">
                                 <span class="inactivo">
                                     <i class="fa fa-plus-square" aria-hidden="true"> </i> Temporada

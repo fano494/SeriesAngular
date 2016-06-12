@@ -11,28 +11,26 @@
 
         vm.filtros = {};
         vm.series = [];
-        vm.cargarDatos = function callServer(tableState) {
-            var pagination = tableState.pagination;
+        vm.cargarDatos = function() {
 
-            var start = pagination.start || 0;
-            var number = 5;
+            var start =  0;
+            var number = 10;
 
-            var sort = tableState.sort.predicate || "default";
-            var reverse = tableState.sort.reverse || false;
+            var sort = "default";
+            var reverse = false;
 
             
             seriesAngularDataFactory.getSeries(sort, reverse, start, number, vm.filtros).then(function (data) {
                 vm.series = data.PaginaActual;
                 console.log(data);
-                tableState.pagination.totalItemCount = data.Estructura.NumeroTotalElementos;
-                tableState.pagination.numberOfPages = data.Estructura.NumeroTotalPaginas;
-                vm.tableState = tableState;
             }).finally(function () {
                 console.log(vm.series);
                 vm.cargando = false;
             });
   
         };
+        vm.cargarDatos();
+
         vm.verSerie = function (id) {
             $location.path('/serie/' + id);
         };

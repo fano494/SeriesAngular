@@ -33,6 +33,11 @@
                 controller: 'serieEditController',
                 controllerAs: 'ctr',
                 label: 'SerieEdit'
+            }).when('/serieEdit/:id', {
+                templateUrl: 'Angular/view/serieEdit/serieEdit.html',
+                controller: 'serieEditController',
+                controllerAs: 'ctr',
+                label: 'SerieEdit'
             }).otherwise({
                 redirectTo: '/'
             });

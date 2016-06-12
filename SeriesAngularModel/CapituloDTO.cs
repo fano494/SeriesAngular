@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeriesAngularModel
 {
-    class CapituloDTO
+    public class CapituloDTO
     {
         public int idseason { get; set; }
 
@@ -16,6 +16,6 @@ namespace SeriesAngularModel
 
         public string description { get; set; }
 
-        public int idchapter { get; set; }
+        public Nullable<int> idchapter { get; set; }
     }
 }

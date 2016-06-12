@@ -38,13 +38,13 @@
             <div class="panel-title">
                 Series
             </div>
-            <div class="galeria panel-body">
-                <div data-ng-repeat="serie in ctr.user.series" class="img-tam-fijo center">
+            <div class="galeria panel-body text-center" style="min-height:200px;">
+                <div data-ng-repeat="serie in ctr.user.series" class="img-tam-fijo">
                     <div data-ng-click="ctr.verSerie(serie.idserie)">
                         <div class="img-descripcion">
                             <div class="inactivo">
-                                <h3 data-ng-bind="::serie.name"></h3>
-                                <p data-ng-bind="::serie.puntuation"> </p>
+                                <h3 data-ng-bind="::serie.seriename"></h3>
+                                <p data-ng-bind="::serie.score"> </p>
                             </div>
                         </div>
                         <img data-ng-src="{{serie.image}}" width="200" height="250" />
